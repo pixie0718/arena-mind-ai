@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { RotateCcw, Goal } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { ChatLanguageSwitcher } from "@/features/chat/components/chat-language-switcher";
 
 interface ChatHeaderProps {
   onClear: () => void;
@@ -20,16 +21,19 @@ export function ChatHeader({ onClear }: ChatHeaderProps) {
           <span className="text-[11px] text-muted-foreground">Always here to help</span>
         </div>
       </Link>
-      <Button
-        type="button"
-        variant="ghost"
-        size="icon-sm"
-        aria-label="Clear conversation"
-        onClick={onClear}
-        className="size-12"
-      >
-        <RotateCcw className="size-4" />
-      </Button>
+      <div className="flex items-center gap-1">
+        <ChatLanguageSwitcher />
+        <Button
+          type="button"
+          variant="ghost"
+          size="icon-sm"
+          aria-label="Clear conversation"
+          onClick={onClear}
+          className="size-12"
+        >
+          <RotateCcw className="size-4" />
+        </Button>
+      </div>
     </div>
   );
 }
