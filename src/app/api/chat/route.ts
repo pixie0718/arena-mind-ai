@@ -53,13 +53,6 @@ export async function POST(request: Request) {
     );
   }
 
-  console.log("[DEBUG]", JSON.stringify({
-    text,
-    intent: prepared.detected.primary,
-    agentResponseReply: prepared.agentResponse?.reply,
-    toolCalls: prepared.agentResponse?.toolCalls,
-  }));
-
   const encoder = new TextEncoder();
 
   const stream = new ReadableStream<Uint8Array>({

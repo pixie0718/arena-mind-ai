@@ -129,8 +129,11 @@ export function buildPrompt(params: {
 }
 
 /**
- * TODO: Once real OpenAI calls are implemented, pass `messages` directly
- * to the Vercel AI SDK `streamText()` call (or the Responses API), and
- * attach the tool registry's Zod schemas as the model's function-calling
- * tools.
+ * `messages` is consumed exactly as built here by `ai/response-generator.ts`,
+ * which passes it straight into the Vercel AI SDK's `streamText()` call —
+ * see `streamGroundedReply`. The tool registry's Zod schemas are
+ * deliberately never attached as model function-calling tools: every tool
+ * call is decided by deterministic agent logic, not by the LLM, so the
+ * model only ever sees already-computed results, never a live tool it
+ * could invoke itself.
  */
