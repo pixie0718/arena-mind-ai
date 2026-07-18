@@ -205,9 +205,10 @@ See [`docs/AI-Architecture/02-AI-Architecture.md`](docs/AI-Architecture/02-AI-Ar
 
 ## Testing & Quality Assurance
 
-Verification was performed by actually running the application — live requests against the real streaming endpoint and a real browser — not by inspecting code and assuming behavior.
+Verification combines an automated unit test suite (via Node's built-in test runner — `npm test`, no extra dependency) with manual/live-request testing — actually running the application, not just inspecting code and assuming behavior.
 
-- **Static checks:** `tsc --noEmit`, ESLint, and a production `next build` all run clean.
+- **Automated unit tests** (`npm test`, also run in CI on every push — see `.github/workflows/ci.yml`): 56 tests across intent classification, seat/gate/row parsing, response validation, the hallucination-prevention refusal detector, i18n helpers, and streaming text chunking. Several are direct regression tests for real bugs caught during live QA (e.g. the seat-parser stopword bug that swallowed "Gate A", and the false-refusal safety net's curly-apostrophe matching bug — both reproduced as failing tests first, then fixed).
+- **Static checks:** `tsc --noEmit`, ESLint, and a production `next build` all run clean, in CI and locally.
 - **Accessibility:** keyboard-only navigation and send flow, ARIA structure on interactive elements (including the stadium map), touch-target sizing, and `prefers-reduced-motion` behavior verified.
 - **Responsive layout:** verified across mobile, tablet, and desktop breakpoints with zero horizontal overflow.
 - **Manual and regression QA:** every agent domain (navigation, food, emergency, translation, venue, transport, match, lost & found) exercised end-to-end, including multi-turn memory recall.
@@ -231,7 +232,7 @@ Full findings, including two rounds of adversarial QA, are documented in [`RC1-R
 
 - Groq's daily token quota is shared and finite; when exhausted, the assistant automatically falls back to deterministic template replies rather than erroring, but loses varied natural phrasing until quota recovers.
 - LLM-based intent classification can occasionally return a different result for an identical repeated message; every path it can land on has been verified to degrade safely rather than hallucinate.
-- No automated test suite exists yet — verification is manual and live-request based.
+- Automated tests cover pure, deterministic logic (parsing, validation, classification, hallucination-guard regexes); the LLM-dependent grounded-generation path itself is verified live/manually rather than with a mocked-model automated test, since the behavior that matters most there (does it actually stay grounded against a real model's output) is exactly what a mock can't exercise honestly.
 
 ## Screenshots
 
@@ -242,3 +243,4 @@ _Screenshots have not yet been captured for this submission. This section is lef
 - `npm run dev` — start the dev server
 - `npm run build` — production build
 - `npm run lint` — ESLint
+- `npm test` — automated unit test suite (Node's built-in test runner, with coverage)
