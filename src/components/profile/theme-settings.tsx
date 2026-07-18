@@ -4,13 +4,18 @@ import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
 import { Moon, Sun } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { cn } from "@/lib/utils";
 
 /**
  * Both themes ("Stadium Night" dark and a full light palette) are already
  * defined in globals.css — this is the first UI that actually lets a
  * visitor switch between them (the app previously forced dark via
  * `forcedTheme` in `app-providers.tsx`).
+ *
+ * Uses a dedicated sun/moon icon button rather than the generic on/off
+ * switch pattern (see `AccessibilitySettings`) — a theme switcher toggles
+ * between two distinct, nameable states (not an on/off preference), so an
+ * icon that directly shows the current mode reads more clearly than a
+ * pill switch here.
  *
  * `next-themes` doesn't know the real theme until after hydration (it
  * reads `localStorage`/the class already applied by its inline script), so
@@ -42,7 +47,7 @@ export function ThemeSettings() {
         <CardDescription>Switch between Stadium Night and light mode.</CardDescription>
       </CardHeader>
       <CardContent>
-        <div className="flex items-center justify-between gap-3 py-2">
+        <div className="flex items-center justify-between gap-3 py-1">
           <div className="flex flex-col">
             <span className="text-sm font-medium text-foreground">Dark mode</span>
             <span className="text-xs text-muted-foreground">
@@ -53,24 +58,12 @@ export function ThemeSettings() {
             type="button"
             role="switch"
             aria-checked={isDark}
-            aria-label="Dark mode"
+            aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
             disabled={!mounted}
             onClick={() => setTheme(isDark ? "light" : "dark")}
-            className="flex h-12 w-12 shrink-0 items-center justify-center disabled:opacity-50"
+            className="glow-secondary flex size-12 shrink-0 items-center justify-center rounded-full border border-border bg-muted text-foreground transition-colors hover:bg-muted/70 active:scale-95 disabled:pointer-events-none disabled:opacity-50"
           >
-            <span
-              className={cn(
-                "relative h-7 w-12 rounded-full border transition-colors",
-                isDark ? "glow-primary border-primary/40 bg-primary/70" : "border-white/10 bg-muted",
-              )}
-            >
-              <span
-                className={cn(
-                  "absolute top-0.5 size-5 rounded-full bg-background shadow transition-transform",
-                  isDark ? "translate-x-[22px]" : "translate-x-0.5",
-                )}
-              />
-            </span>
+            {isDark ? <Moon className="size-5" aria-hidden="true" /> : <Sun className="size-5" aria-hidden="true" />}
           </button>
         </div>
       </CardContent>

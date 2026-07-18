@@ -63,7 +63,7 @@ export function AccessibilitySettings() {
                 <span
                   className={cn(
                     "relative h-7 w-12 rounded-full border transition-colors",
-                    isOn ? "glow-primary border-primary/40 bg-primary/70" : "border-white/10 bg-muted",
+                    isOn ? "glow-primary border-primary/40 bg-primary/70" : "border-border bg-input",
                   )}
                 >
                   <span
