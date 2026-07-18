@@ -135,6 +135,30 @@
   }
 }
 
+/*
+ * Light-mode counterpart to the dark "Stadium Night" background below —
+ * same pitch-green/floodlight-gold motif and pitch-stripe texture, using
+ * the light theme's own primary/secondary token values at low opacity, so
+ * light mode doesn't read as a bare fallback next to dark mode's richer
+ * atmosphere. `.dark body` below has higher specificity (one extra class)
+ * and fully overrides this when dark mode is active, regardless of
+ * source order.
+ */
+body {
+  background-image:
+    radial-gradient(640px circle at 12% -8%, oklch(0.6 0.19 149 / 14%), transparent 62%),
+    radial-gradient(520px circle at 105% 0%, oklch(0.72 0.15 80 / 12%), transparent 58%),
+    radial-gradient(560px circle at 50% 115%, oklch(0.6 0.19 149 / 8%), transparent 65%),
+    repeating-linear-gradient(
+      115deg,
+      oklch(0.19 0.03 255 / 3%) 0px,
+      oklch(0.19 0.03 255 / 3%) 2px,
+      transparent 2px,
+      transparent 42px
+    );
+  background-attachment: fixed;
+}
+
 /* Floodlight glow + pitch-stripe texture, dark ("Stadium Night") theme only. */
 .dark body {
   background-image:
