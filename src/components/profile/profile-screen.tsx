@@ -5,6 +5,7 @@ import { StadiumSelector } from "@/components/profile/stadium-selector";
 import { LanguageSelector } from "@/components/profile/language-selector";
 import { AccessibilitySettings } from "@/components/profile/accessibility-settings";
 import { LinkedTicketForm } from "@/components/profile/linked-ticket-form";
+import { ThemeSettings } from "@/components/profile/theme-settings";
 
 export function ProfileScreen() {
   return (
@@ -22,6 +23,7 @@ export function ProfileScreen() {
       <StadiumSelector />
       <LinkedTicketForm />
       <AccessibilitySettings />
+      <ThemeSettings />
       <LanguageSelector />
     </div>
   );
