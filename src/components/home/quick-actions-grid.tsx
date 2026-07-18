@@ -39,7 +39,7 @@ export function QuickActionsGrid() {
             >
               <Icon className="size-5" aria-hidden="true" />
             </span>
-            <span className="font-heading text-xs leading-tight tracking-wide text-foreground uppercase">
+            <span className="flex min-h-8 items-center justify-center font-heading text-xs leading-tight tracking-wide text-foreground uppercase">
               {action.label}
             </span>
           </Link>
