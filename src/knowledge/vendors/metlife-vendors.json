@@ -1,0 +1,40 @@
+[
+  {
+    "id": "vendor-001",
+    "stadiumId": "metlife",
+    "name": "Burger Express",
+    "category": "Fast Food",
+    "location": "Block B, Level 1",
+    "queueEstimateMinutes": 4,
+    "crowdLevel": "high",
+    "menu": [
+      { "id": "item-001", "name": "Classic Burger", "price": 9.5 },
+      { "id": "item-002", "name": "Veggie Burger", "price": 9.0, "dietary": ["vegetarian"] }
+    ]
+  },
+  {
+    "id": "vendor-002",
+    "stadiumId": "metlife",
+    "name": "Pizza Corner",
+    "category": "Fast Food",
+    "location": "Block D, Level 1",
+    "queueEstimateMinutes": 7,
+    "crowdLevel": "moderate",
+    "menu": [
+      { "id": "item-003", "name": "Margherita Pizza", "price": 11.0, "dietary": ["vegetarian"] }
+    ]
+  },
+  {
+    "id": "vendor-003",
+    "stadiumId": "metlife",
+    "name": "Green Bowl Kitchen",
+    "category": "Healthy",
+    "location": "Block C, Level 1",
+    "queueEstimateMinutes": 5,
+    "crowdLevel": "low",
+    "menu": [
+      { "id": "item-004", "name": "Grain Bowl", "price": 12.0, "dietary": ["vegetarian", "vegan"] },
+      { "id": "item-005", "name": "Chicken Bowl", "price": 13.0 }
+    ]
+  }
+]

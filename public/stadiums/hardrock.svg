@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700" role="img" aria-label="Hard Rock Stadium interactive map">
+  <defs>
+    <style>
+      .pitch { fill: #1f6b3a; }
+      .pitch-line { fill: none; stroke: #eef7f0; stroke-width: 2; opacity: 0.55; }
+      .concourse { fill: none; stroke: currentColor; stroke-width: 1; opacity: 0.12; }
+      .section {
+        fill: currentColor;
+        color: var(--section-default, #3a4152);
+        stroke: #0b0f1a;
+        stroke-width: 1.5;
+        cursor: pointer;
+        transition: color 0.2s ease, filter 0.2s ease;
+      }
+      .section:hover { color: var(--section-hover, #52607a); }
+      .section:focus-visible { outline: 3px solid var(--section-focus, #22c55e); outline-offset: -3px; }
+      .section.is-focused { color: var(--section-focused, #22c55e); filter: drop-shadow(0 0 8px rgba(34, 197, 94, 0.55)); }
+      .section.is-not-found { color: var(--section-error, #ef4444); }
+      .section-label { fill: #f5f6f8; font-family: system-ui, sans-serif; font-size: 22px; font-weight: 600; text-anchor: middle; dominant-baseline: middle; pointer-events: none; }
+      .gate-marker { fill: #d4a72c; stroke: #0b0f1a; stroke-width: 1.5; }
+      .gate-marker.is-secondary { fill: var(--section-secondary, #f97316); filter: drop-shadow(0 0 6px rgba(249, 115, 22, 0.55)); }
+      .section.is-secondary { color: var(--section-secondary, #f97316); filter: drop-shadow(0 0 6px rgba(249, 115, 22, 0.55)); }
+      .gate-label { fill: #f5f6f8; font-family: system-ui, sans-serif; font-size: 16px; font-weight: 700; text-anchor: middle; dominant-baseline: middle; pointer-events: none; }
+    </style>
+  </defs>
+
+  <circle class="concourse" cx="500" cy="350" r="245" />
+
+  <path class="section" data-section-id="110" d="M 372.72 222.72 L 287.87 137.87 A 300 300 0 0 1 712.13 137.87 L 627.28 222.72 A 180 180 0 0 0 372.72 222.72 Z" />
+  <path class="section" data-section-id="120" d="M 627.28 222.72 L 712.13 137.87 A 300 300 0 0 1 712.13 562.13 L 627.28 477.28 A 180 180 0 0 0 627.28 222.72 Z" />
+  <path class="section" data-section-id="130" d="M 627.28 477.28 L 712.13 562.13 A 300 300 0 0 1 287.87 562.13 L 372.72 477.28 A 180 180 0 0 0 627.28 477.28 Z" />
+  <path class="section" data-section-id="140" d="M 372.72 477.28 L 287.87 562.13 A 300 300 0 0 1 287.87 137.87 L 372.72 222.72 A 180 180 0 0 0 372.72 477.28 Z" />
+
+  <text class="section-label" x="500" y="110">110</text>
+  <text class="section-label" x="740" y="350">120</text>
+  <text class="section-label" x="500" y="590">130</text>
+  <text class="section-label" x="260" y="350">140</text>
+
+  <rect class="pitch" x="390" y="290" width="220" height="120" rx="8" />
+  <rect class="pitch-line" x="390" y="290" width="220" height="120" rx="8" />
+  <line class="pitch-line" x1="500" y1="290" x2="500" y2="410" />
+  <circle class="pitch-line" cx="500" cy="350" r="22" />
+
+  <circle class="gate-marker" data-gate-id="A" cx="500" cy="35" r="14" />
+  <text class="gate-label" x="500" y="35">A</text>
+  <circle class="gate-marker" data-gate-id="B" cx="815" cy="350" r="14" />
+  <text class="gate-label" x="815" y="350">B</text>
+  <circle class="gate-marker" data-gate-id="C" cx="500" cy="665" r="14" />
+  <text class="gate-label" x="500" y="665">C</text>
+  <circle class="gate-marker" data-gate-id="D" cx="185" cy="350" r="14" />
+  <text class="gate-label" x="185" y="350">D</text>
+</svg>

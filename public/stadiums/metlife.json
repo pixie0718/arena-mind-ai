@@ -1,0 +1,165 @@
+{
+  "stadiumId": "metlife",
+  "name": "MetLife Stadium",
+  "svgUrl": "/stadiums/metlife.svg",
+  "viewBox": "0 0 1000 700",
+  "gates": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "sections": [
+    {
+      "id": "101",
+      "label": "Section 101",
+      "gate": "A",
+      "level": 1,
+      "walkingTimeMinutes": 3,
+      "accessible": true,
+      "nearby": {
+        "restroom": "Restroom - Block B",
+        "food": "Burger Express",
+        "exit": "Exit North",
+        "medical": "Medical Center North"
+      },
+      "crowdLevel": "high"
+    },
+    {
+      "id": "102",
+      "label": "Section 102",
+      "gate": "B",
+      "level": 1,
+      "walkingTimeMinutes": 4,
+      "accessible": false,
+      "nearby": {
+        "restroom": "Restroom - Block B",
+        "food": "Burger Express",
+        "exit": "Exit North",
+        "medical": "Medical Center North"
+      },
+      "crowdLevel": "moderate"
+    },
+    {
+      "id": "103",
+      "label": "Section 103",
+      "gate": "C",
+      "level": 1,
+      "walkingTimeMinutes": 3,
+      "accessible": false,
+      "nearby": {
+        "restroom": "Level 1 Concourse Restroom",
+        "food": "Pizza Corner",
+        "exit": "Exit South",
+        "medical": "Medical Center South"
+      },
+      "crowdLevel": "low"
+    },
+    {
+      "id": "104",
+      "label": "Section 104",
+      "gate": "D",
+      "level": 1,
+      "walkingTimeMinutes": 5,
+      "accessible": true,
+      "nearby": {
+        "restroom": "Level 1 Concourse Restroom",
+        "food": "Pizza Corner",
+        "exit": "Exit South",
+        "medical": "Medical Center South"
+      },
+      "crowdLevel": "low"
+    },
+    {
+      "id": "105",
+      "label": "Section 105",
+      "gate": "E",
+      "level": 1,
+      "walkingTimeMinutes": 4,
+      "accessible": false,
+      "nearby": {
+        "restroom": "Level 1 Concourse Restroom",
+        "food": "Burger Express",
+        "exit": "Exit East",
+        "medical": "Medical Center North"
+      },
+      "crowdLevel": "moderate"
+    },
+    {
+      "id": "201",
+      "label": "Section 201",
+      "gate": "A",
+      "level": 2,
+      "walkingTimeMinutes": 6,
+      "accessible": true,
+      "nearby": {
+        "restroom": "Level 2 Concourse Restroom",
+        "food": "Burger Express",
+        "exit": "Exit North",
+        "medical": "Medical Center North"
+      },
+      "crowdLevel": "moderate"
+    },
+    {
+      "id": "202",
+      "label": "Section 202",
+      "gate": "B",
+      "level": 2,
+      "walkingTimeMinutes": 7,
+      "accessible": false,
+      "nearby": {
+        "restroom": "Level 2 Concourse Restroom",
+        "food": "Burger Express",
+        "exit": "Exit North",
+        "medical": "Medical Center North"
+      },
+      "crowdLevel": "high"
+    },
+    {
+      "id": "203",
+      "label": "Section 203",
+      "gate": "C",
+      "level": 2,
+      "walkingTimeMinutes": 6,
+      "accessible": false,
+      "nearby": {
+        "restroom": "Level 2 Concourse Restroom",
+        "food": "Pizza Corner",
+        "exit": "Exit South",
+        "medical": "Medical Center South"
+      },
+      "crowdLevel": "low"
+    },
+    {
+      "id": "204",
+      "label": "Section 204",
+      "gate": "D",
+      "level": 2,
+      "walkingTimeMinutes": 8,
+      "accessible": true,
+      "nearby": {
+        "restroom": "Level 2 Concourse Restroom",
+        "food": "Pizza Corner",
+        "exit": "Exit South",
+        "medical": "Medical Center South"
+      },
+      "crowdLevel": "moderate"
+    },
+    {
+      "id": "205",
+      "label": "Section 205",
+      "gate": "E",
+      "level": 2,
+      "walkingTimeMinutes": 7,
+      "accessible": false,
+      "nearby": {
+        "restroom": "Level 2 Concourse Restroom",
+        "food": "Burger Express",
+        "exit": "Exit East",
+        "medical": "Medical Center North"
+      },
+      "crowdLevel": "low"
+    }
+  ]
+}

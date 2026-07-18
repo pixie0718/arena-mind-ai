@@ -1,0 +1,12 @@
+{
+  "id": "azteca",
+  "name": "Estadio Azteca",
+  "city": "Mexico City",
+  "country": "Mexico",
+  "gates": ["Gate A", "Gate B", "Gate C", "Gate D"],
+  "sections": ["Block A", "Block B", "Block C", "Block D"],
+  "emergencyPoints": [
+    { "id": "az-ep-1", "label": "First Aid North", "location": "Gate A Concourse" },
+    { "id": "az-ep-2", "label": "First Aid South", "location": "Gate C Concourse" }
+  ]
+}

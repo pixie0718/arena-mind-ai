@@ -1,0 +1,12 @@
+{
+  "id": "hardrock",
+  "name": "Hard Rock Stadium",
+  "city": "Miami Gardens",
+  "country": "USA",
+  "gates": ["Gate A", "Gate B", "Gate C", "Gate D"],
+  "sections": ["Block A", "Block B", "Block C", "Block D"],
+  "emergencyPoints": [
+    { "id": "hr-ep-1", "label": "First Aid North", "location": "Gate A Concourse" },
+    { "id": "hr-ep-2", "label": "First Aid South", "location": "Gate C Concourse" }
+  ]
+}

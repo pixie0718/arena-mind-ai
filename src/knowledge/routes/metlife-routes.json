@@ -1,0 +1,16 @@
+[
+  {
+    "id": "route-001",
+    "stadiumId": "metlife",
+    "from": "Gate A",
+    "to": "Block B, Row 14, Seat 22",
+    "steps": [
+      "Enter through Gate A",
+      "Take the escalator to Level 1",
+      "Follow signs toward Block B",
+      "Seat 22 is in Row 14, on the left aisle"
+    ],
+    "estimatedMinutes": 3,
+    "accessible": true
+  }
+]

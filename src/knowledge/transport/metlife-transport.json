@@ -1,0 +1,56 @@
+[
+  {
+    "id": "transport-001",
+    "stadiumId": "metlife",
+    "type": "metro",
+    "name": "Secaucus Junction Rail",
+    "etaMinutes": 15,
+    "notes": "Shuttle bus connects rail station to the stadium.",
+    "crowdLevel": "high"
+  },
+  {
+    "id": "transport-002",
+    "stadiumId": "metlife",
+    "type": "rideshare",
+    "name": "Rideshare Pickup - Lot F",
+    "etaMinutes": 10,
+    "notes": "Designated pickup zone with the shortest queue after matches.",
+    "crowdLevel": "moderate"
+  },
+  {
+    "id": "transport-003",
+    "stadiumId": "metlife",
+    "type": "parking",
+    "name": "Parking Lot C",
+    "etaMinutes": 5,
+    "notes": "Closest accessible parking to Gate A.",
+    "crowdLevel": "low"
+  },
+  {
+    "id": "transport-004",
+    "stadiumId": "metlife",
+    "type": "bus",
+    "name": "Stadium Shuttle Bus",
+    "etaMinutes": 8,
+    "notes": "Free shuttle loop between the stadium and the main parking fields.",
+    "crowdLevel": "moderate"
+  },
+  {
+    "id": "transport-005",
+    "stadiumId": "metlife",
+    "type": "taxi",
+    "name": "Taxi Stand - Gate D",
+    "etaMinutes": 12,
+    "notes": "Metered taxis queue at the Gate D taxi stand after the match.",
+    "crowdLevel": "moderate"
+  },
+  {
+    "id": "transport-006",
+    "stadiumId": "metlife",
+    "type": "walking",
+    "name": "Walking Route via Gate A",
+    "etaMinutes": 20,
+    "notes": "Paved pedestrian path to the nearest transit hub — no queue, weather-dependent.",
+    "crowdLevel": "low"
+  }
+]

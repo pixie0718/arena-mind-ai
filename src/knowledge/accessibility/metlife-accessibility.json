@@ -1,0 +1,16 @@
+[
+  {
+    "id": "acc-001",
+    "stadiumId": "metlife",
+    "feature": "Wheelchair Seating",
+    "location": "Block A and Block C, Level 1",
+    "description": "Dedicated wheelchair-accessible seating with companion seats."
+  },
+  {
+    "id": "acc-002",
+    "stadiumId": "metlife",
+    "feature": "Accessible Elevator",
+    "location": "Gate B",
+    "description": "Elevator connecting all levels, priority access for wheelchair users."
+  }
+]

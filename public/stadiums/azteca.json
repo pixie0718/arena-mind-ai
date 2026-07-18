@@ -1,0 +1,74 @@
+{
+  "stadiumId": "azteca",
+  "name": "Estadio Azteca",
+  "svgUrl": "/stadiums/azteca.svg",
+  "viewBox": "0 0 1000 700",
+  "gates": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "sections": [
+    {
+      "id": "210",
+      "label": "Section 210",
+      "gate": "A",
+      "level": 1,
+      "walkingTimeMinutes": 4,
+      "accessible": true,
+      "nearby": {
+        "restroom": "Concourse Restroom",
+        "food": "Antojitos Stand",
+        "exit": "Exit North",
+        "medical": "First Aid - Gate A"
+      },
+      "crowdLevel": "moderate"
+    },
+    {
+      "id": "220",
+      "label": "Section 220",
+      "gate": "B",
+      "level": 1,
+      "walkingTimeMinutes": 5,
+      "accessible": false,
+      "nearby": {
+        "restroom": "Concourse Restroom",
+        "food": "Antojitos Stand",
+        "exit": "Exit East",
+        "medical": "First Aid - Gate B"
+      },
+      "crowdLevel": "high"
+    },
+    {
+      "id": "230",
+      "label": "Section 230",
+      "gate": "C",
+      "level": 1,
+      "walkingTimeMinutes": 4,
+      "accessible": false,
+      "nearby": {
+        "restroom": "Concourse Restroom",
+        "food": "Torta Grill",
+        "exit": "Exit South",
+        "medical": "First Aid - Gate C"
+      },
+      "crowdLevel": "low"
+    },
+    {
+      "id": "240",
+      "label": "Section 240",
+      "gate": "D",
+      "level": 1,
+      "walkingTimeMinutes": 3,
+      "accessible": true,
+      "nearby": {
+        "restroom": "Concourse Restroom",
+        "food": "Torta Grill",
+        "exit": "Exit West",
+        "medical": "First Aid - Gate D"
+      },
+      "crowdLevel": "low"
+    }
+  ]
+}

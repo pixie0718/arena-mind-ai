@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700" role="img" aria-label="MetLife Stadium interactive map">
+  <defs>
+    <style>
+      .pitch { fill: #1f6b3a; }
+      .pitch-line { fill: none; stroke: #eef7f0; stroke-width: 2; opacity: 0.55; }
+      .concourse { fill: none; stroke: currentColor; stroke-width: 1; opacity: 0.12; }
+      .section {
+        fill: currentColor;
+        color: var(--section-default, #3a4152);
+        stroke: #0b0f1a;
+        stroke-width: 1.5;
+        cursor: pointer;
+        transition: color 0.2s ease, filter 0.2s ease;
+      }
+      .section:hover { color: var(--section-hover, #52607a); }
+      .section:focus-visible { outline: 3px solid var(--section-focus, #22c55e); outline-offset: -3px; }
+      .section.is-focused { color: var(--section-focused, #22c55e); filter: drop-shadow(0 0 8px rgba(34, 197, 94, 0.55)); }
+      .section.is-not-found { color: var(--section-error, #ef4444); }
+      .section-label { fill: #f5f6f8; font-family: system-ui, sans-serif; font-size: 20px; font-weight: 600; text-anchor: middle; dominant-baseline: middle; pointer-events: none; }
+      .gate-marker { fill: #d4a72c; stroke: #0b0f1a; stroke-width: 1.5; }
+      .gate-marker.is-secondary { fill: var(--section-secondary, #f97316); filter: drop-shadow(0 0 6px rgba(249, 115, 22, 0.55)); }
+      .section.is-secondary { color: var(--section-secondary, #f97316); filter: drop-shadow(0 0 6px rgba(249, 115, 22, 0.55)); }
+      .gate-label { fill: #f5f6f8; font-family: system-ui, sans-serif; font-size: 16px; font-weight: 700; text-anchor: middle; dominant-baseline: middle; pointer-events: none; }
+    </style>
+  </defs>
+
+  <circle class="concourse" cx="500" cy="350" r="265" />
+
+  <!-- Level 1 (lower bowl) -->
+  <path class="section" data-section-id="101" d="M 394.2 204.38 L 347.18 139.66 A 260 260 0 0 1 652.82 139.66 L 605.8 204.38 A 180 180 0 0 0 394.2 204.38 Z" />
+  <path class="section" data-section-id="102" d="M 605.8 204.38 L 652.82 139.66 A 260 260 0 0 1 747.27 430.34 L 671.19 405.62 A 180 180 0 0 0 605.8 204.38 Z" />
+  <path class="section" data-section-id="103" d="M 671.19 405.62 L 747.27 430.34 A 260 260 0 0 1 500 610 L 500 530 A 180 180 0 0 0 671.19 405.62 Z" />
+  <path class="section" data-section-id="104" d="M 500 530 L 500 610 A 260 260 0 0 1 252.73 430.34 L 328.81 405.62 A 180 180 0 0 0 500 530 Z" />
+  <path class="section" data-section-id="105" d="M 328.81 405.62 L 252.73 430.34 A 260 260 0 0 1 347.18 139.66 L 394.2 204.38 A 180 180 0 0 0 328.81 405.62 Z" />
+
+  <!-- Level 2 (upper bowl) -->
+  <path class="section" data-section-id="201" d="M 341.3 131.57 L 311.91 91.11 A 320 320 0 0 1 688.09 91.11 L 658.7 131.57 A 270 270 0 0 0 341.3 131.57 Z" />
+  <path class="section" data-section-id="202" d="M 658.7 131.57 L 688.09 91.11 A 320 320 0 0 1 804.34 448.89 L 756.79 433.43 A 270 270 0 0 0 658.7 131.57 Z" />
+  <path class="section" data-section-id="203" d="M 756.79 433.43 L 804.34 448.89 A 320 320 0 0 1 500 670 L 500 620 A 270 270 0 0 0 756.79 433.43 Z" />
+  <path class="section" data-section-id="204" d="M 500 620 L 500 670 A 320 320 0 0 1 195.66 448.89 L 243.21 433.43 A 270 270 0 0 0 500 620 Z" />
+  <path class="section" data-section-id="205" d="M 243.21 433.43 L 195.66 448.89 A 320 320 0 0 1 311.91 91.11 L 341.3 131.57 A 270 270 0 0 0 243.21 433.43 Z" />
+
+  <text class="section-label" x="500" y="130">101</text>
+  <text class="section-label" x="709.23" y="282.02">102</text>
+  <text class="section-label" x="629.31" y="527.98">103</text>
+  <text class="section-label" x="370.69" y="527.98">104</text>
+  <text class="section-label" x="290.77" y="282.02">105</text>
+
+  <text class="section-label" x="500" y="55">201</text>
+  <text class="section-label" x="780.56" y="258.84">202</text>
+  <text class="section-label" x="673.4" y="588.66">203</text>
+  <text class="section-label" x="326.6" y="588.66">204</text>
+  <text class="section-label" x="219.44" y="258.84">205</text>
+
+  <!-- Pitch -->
+  <rect class="pitch" x="390" y="290" width="220" height="120" rx="8" />
+  <rect class="pitch-line" x="390" y="290" width="220" height="120" rx="8" />
+  <line class="pitch-line" x1="500" y1="290" x2="500" y2="410" />
+  <circle class="pitch-line" cx="500" cy="350" r="22" />
+
+  <!-- Gates -->
+  <circle class="gate-marker" data-gate-id="A" cx="500" cy="15" r="14" />
+  <text class="gate-label" x="500" y="15">A</text>
+  <circle class="gate-marker" data-gate-id="B" cx="818.6" cy="246.48" r="14" />
+  <text class="gate-label" x="818.6" y="246.48">B</text>
+  <circle class="gate-marker" data-gate-id="C" cx="696.91" cy="621.02" r="14" />
+  <text class="gate-label" x="696.91" y="621.02">C</text>
+  <circle class="gate-marker" data-gate-id="D" cx="303.09" cy="621.02" r="14" />
+  <text class="gate-label" x="303.09" y="621.02">D</text>
+  <circle class="gate-marker" data-gate-id="E" cx="181.4" cy="246.48" r="14" />
+  <text class="gate-label" x="181.4" y="246.48">E</text>
+</svg>

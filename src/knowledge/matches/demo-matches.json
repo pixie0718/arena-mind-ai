@@ -1,0 +1,29 @@
+[
+  {
+    "id": "match-001",
+    "stadiumId": "metlife",
+    "date": "2026-07-19",
+    "kickoff": "15:00",
+    "homeTeam": "Argentina",
+    "awayTeam": "Brazil",
+    "competition": "FIFA World Cup 2026 - Final"
+  },
+  {
+    "id": "match-002",
+    "stadiumId": "hardrock",
+    "date": "2026-06-15",
+    "kickoff": "19:00",
+    "homeTeam": "USA",
+    "awayTeam": "Mexico",
+    "competition": "FIFA World Cup 2026 - Group Stage"
+  },
+  {
+    "id": "match-003",
+    "stadiumId": "azteca",
+    "date": "2026-06-11",
+    "kickoff": "12:00",
+    "homeTeam": "Mexico",
+    "awayTeam": "Canada",
+    "competition": "FIFA World Cup 2026 - Opening Match"
+  }
+]

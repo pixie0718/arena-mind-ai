@@ -1,0 +1,74 @@
+{
+  "stadiumId": "hardrock",
+  "name": "Hard Rock Stadium",
+  "svgUrl": "/stadiums/hardrock.svg",
+  "viewBox": "0 0 1000 700",
+  "gates": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "sections": [
+    {
+      "id": "110",
+      "label": "Section 110",
+      "gate": "A",
+      "level": 1,
+      "walkingTimeMinutes": 3,
+      "accessible": true,
+      "nearby": {
+        "restroom": "Concourse Restroom",
+        "food": "Grill Stand",
+        "exit": "Exit North",
+        "medical": "First Aid - Gate A"
+      },
+      "crowdLevel": "high"
+    },
+    {
+      "id": "120",
+      "label": "Section 120",
+      "gate": "B",
+      "level": 1,
+      "walkingTimeMinutes": 4,
+      "accessible": false,
+      "nearby": {
+        "restroom": "Concourse Restroom",
+        "food": "Grill Stand",
+        "exit": "Exit East",
+        "medical": "First Aid - Gate B"
+      },
+      "crowdLevel": "moderate"
+    },
+    {
+      "id": "130",
+      "label": "Section 130",
+      "gate": "C",
+      "level": 1,
+      "walkingTimeMinutes": 4,
+      "accessible": false,
+      "nearby": {
+        "restroom": "Concourse Restroom",
+        "food": "Taco Corner",
+        "exit": "Exit South",
+        "medical": "First Aid - Gate C"
+      },
+      "crowdLevel": "low"
+    },
+    {
+      "id": "140",
+      "label": "Section 140",
+      "gate": "D",
+      "level": 1,
+      "walkingTimeMinutes": 3,
+      "accessible": true,
+      "nearby": {
+        "restroom": "Concourse Restroom",
+        "food": "Taco Corner",
+        "exit": "Exit West",
+        "medical": "First Aid - Gate D"
+      },
+      "crowdLevel": "moderate"
+    }
+  ]
+}

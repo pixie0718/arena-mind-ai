@@ -1,0 +1,14 @@
+[
+  {
+    "id": "faq-001",
+    "question": "What items are prohibited inside the stadium?",
+    "answer": "Outside food, glass containers, and large bags are not permitted. Small clear bags are allowed.",
+    "category": "Entry Rules"
+  },
+  {
+    "id": "faq-002",
+    "question": "Can I bring an empty water bottle?",
+    "answer": "Yes, empty reusable bottles are allowed and can be refilled at water stations inside.",
+    "category": "Entry Rules"
+  }
+]

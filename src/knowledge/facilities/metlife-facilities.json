@@ -1,0 +1,62 @@
+[
+  {
+    "id": "fac-001",
+    "stadiumId": "metlife",
+    "type": "restroom",
+    "name": "Restroom - Block B",
+    "floor": "Level 1",
+    "section": "Block B",
+    "accessible": true,
+    "crowdLevel": "high"
+  },
+  {
+    "id": "fac-002",
+    "stadiumId": "metlife",
+    "type": "medical",
+    "name": "Medical Center North",
+    "floor": "Level 1",
+    "section": "Block A",
+    "accessible": true,
+    "crowdLevel": "low"
+  },
+  {
+    "id": "fac-003",
+    "stadiumId": "metlife",
+    "type": "merchandise",
+    "name": "Official Store - Gate C",
+    "floor": "Level 1",
+    "section": "Gate C",
+    "accessible": true,
+    "crowdLevel": "moderate"
+  },
+  {
+    "id": "fac-004",
+    "stadiumId": "metlife",
+    "type": "water_station",
+    "name": "Water Refill - Block D",
+    "floor": "Level 1",
+    "section": "Block D",
+    "accessible": true,
+    "crowdLevel": "low"
+  },
+  {
+    "id": "fac-005",
+    "stadiumId": "metlife",
+    "type": "restroom",
+    "name": "Restroom - Block D",
+    "floor": "Level 1",
+    "section": "Block D",
+    "accessible": true,
+    "crowdLevel": "low"
+  },
+  {
+    "id": "fac-006",
+    "stadiumId": "metlife",
+    "type": "restroom",
+    "name": "Restroom - Block A (Upper)",
+    "floor": "Level 2",
+    "section": "Block A",
+    "accessible": false,
+    "crowdLevel": "moderate"
+  }
+]
