@@ -61,7 +61,8 @@ async function execute(
           status: "section_known",
           section,
           nearestMedicalLabel:
-            section.nearby.medical ?? "the nearest medical point — a nearby volunteer can direct you",
+            section.nearby.medical ??
+            "the nearest medical point — a nearby volunteer can direct you",
           nearestExitLabel: section.nearby.exit ?? `Gate ${section.gate}`,
           etaMinutes,
         },
@@ -80,12 +81,17 @@ async function execute(
     };
   }
 
-  return { success: true, data: { status: "stadium_only", stadiumName: config.name }, source: "stadium-config" };
+  return {
+    success: true,
+    data: { status: "stadium_only", stadiumName: config.name },
+    source: "stadium-config",
+  };
 }
 
 export const emergencyTool: ToolDefinition<EmergencyDispatchResult> = {
   name: "emergency_dispatch",
-  description: "Resolves the nearest medical team, exit, and ETA for a stadium section during an emergency.",
+  description:
+    "Resolves the nearest medical team, exit, and ETA for a stadium section during an emergency.",
   inputSchema,
   execute,
 };

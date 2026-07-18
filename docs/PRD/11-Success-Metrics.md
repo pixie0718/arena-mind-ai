@@ -54,13 +54,13 @@ Average time required to complete a task.
 
 Example Targets
 
-| Task | Target |
-|-------|--------|
-| Seat Navigation | < 30 sec |
-| Food Order | < 60 sec |
-| Lost Item Report | < 90 sec |
+| Task              | Target   |
+| ----------------- | -------- |
+| Seat Navigation   | < 30 sec |
+| Food Order        | < 60 sec |
+| Lost Item Report  | < 90 sec |
 | Emergency Request | < 20 sec |
-| Translation | < 10 sec |
+| Translation       | < 10 sec |
 
 ---
 
@@ -208,13 +208,13 @@ Greater than 95%.
 
 # Performance Metrics
 
-| Metric | Target |
-|---------|--------|
-| Initial Load Time | < 3 sec |
-| AI Response Time | < 2 sec |
+| Metric                | Target   |
+| --------------------- | -------- |
+| Initial Load Time     | < 3 sec  |
+| AI Response Time      | < 2 sec  |
 | Quick Action Response | < 300 ms |
-| Session Recovery | < 1 sec |
-| Static Screen Load | < 1 sec |
+| Session Recovery      | < 1 sec  |
+| Static Screen Load    | < 1 sec  |
 
 ---
 

@@ -45,6 +45,4 @@ export interface NavigationBrowsePayload {
 }
 
 export type NavigationMetadata =
-  | NavigationFoundPayload
-  | NavigationNotFoundPayload
-  | NavigationBrowsePayload;
+  NavigationFoundPayload | NavigationNotFoundPayload | NavigationBrowsePayload;

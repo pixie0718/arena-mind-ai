@@ -3,13 +3,7 @@
   "name": "MetLife Stadium",
   "svgUrl": "/stadiums/metlife.svg",
   "viewBox": "0 0 1000 700",
-  "gates": [
-    "A",
-    "B",
-    "C",
-    "D",
-    "E"
-  ],
+  "gates": ["A", "B", "C", "D", "E"],
   "sections": [
     {
       "id": "101",

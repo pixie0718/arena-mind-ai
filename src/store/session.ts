@@ -31,28 +31,15 @@ const defaultAccessibility: AccessibilityPreferences = {
   voiceFirst: false,
 };
 
-export const sessionIdAtom = atomWithStorage<string | null>(
-  "arenamind:sessionId",
-  null,
+export const sessionIdAtom = atomWithStorage<string | null>("arenamind:sessionId", null);
+
+export const preferredLanguageAtom = atomWithStorage<string>("arenamind:language", "en");
+
+export const stadiumIdAtom = atomWithStorage<string>("arenamind:stadiumId", DEFAULT_STADIUM_ID);
+
+export const accessibilityPreferencesAtom = atomWithStorage<AccessibilityPreferences>(
+  "arenamind:accessibility",
+  defaultAccessibility,
 );
 
-export const preferredLanguageAtom = atomWithStorage<string>(
-  "arenamind:language",
-  "en",
-);
-
-export const stadiumIdAtom = atomWithStorage<string>(
-  "arenamind:stadiumId",
-  DEFAULT_STADIUM_ID,
-);
-
-export const accessibilityPreferencesAtom =
-  atomWithStorage<AccessibilityPreferences>(
-    "arenamind:accessibility",
-    defaultAccessibility,
-  );
-
-export const linkedTicketAtom = atomWithStorage<LinkedTicket>(
-  "arenamind:ticket",
-  null,
-);
+export const linkedTicketAtom = atomWithStorage<LinkedTicket>("arenamind:ticket", null);

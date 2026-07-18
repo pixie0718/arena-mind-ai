@@ -333,16 +333,16 @@ Role: Food Stall Manager
 
 # Persona Comparison
 
-| Persona | Main Goal | Biggest Problem | AI Capability |
-|----------|-----------|----------------|--------------|
-| International Fan | Navigation | Unknown venue | AI Navigation |
-| Family | Safety | Children | Family Assistant |
-| Elderly | Accessibility | Walking | Accessible Routes |
-| Wheelchair User | Accessibility | Barriers | Accessible Navigation |
-| Volunteer | Assistance | Repeated Questions | AI Knowledge |
-| Medical Staff | Emergency | Location Accuracy | Emergency AI |
-| Security | Safety | Crowd | Incident Intelligence |
-| Vendor | Food Service | Queue | Order Assistant |
+| Persona           | Main Goal     | Biggest Problem    | AI Capability         |
+| ----------------- | ------------- | ------------------ | --------------------- |
+| International Fan | Navigation    | Unknown venue      | AI Navigation         |
+| Family            | Safety        | Children           | Family Assistant      |
+| Elderly           | Accessibility | Walking            | Accessible Routes     |
+| Wheelchair User   | Accessibility | Barriers           | Accessible Navigation |
+| Volunteer         | Assistance    | Repeated Questions | AI Knowledge          |
+| Medical Staff     | Emergency     | Location Accuracy  | Emergency AI          |
+| Security          | Safety        | Crowd              | Incident Intelligence |
+| Vendor            | Food Service  | Queue              | Order Assistant       |
 
 ---
 

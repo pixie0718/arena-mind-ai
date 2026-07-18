@@ -10,17 +10,17 @@ While not directly part of the MVP requirements, these sections improve developm
 
 # Glossary
 
-| Term | Definition |
-|------|------------|
-| AI Agent | A specialized AI responsible for one domain (Navigation, Emergency, Food, etc.) |
+| Term            | Definition                                                                         |
+| --------------- | ---------------------------------------------------------------------------------- |
+| AI Agent        | A specialized AI responsible for one domain (Navigation, Emergency, Food, etc.)    |
 | AI Orchestrator | The central coordinator that selects the appropriate AI agent based on user intent |
-| Intent | The user's objective inferred from natural language |
-| Context | Information already known about the user or environment |
-| Knowledge Base | Structured data used by the AI to answer questions |
-| Session | Temporary anonymous interaction stored in the browser |
-| Quick Action | One-tap shortcut that starts a predefined AI conversation |
-| MVP | Minimum Viable Product |
-| ETA | Estimated Time of Arrival |
+| Intent          | The user's objective inferred from natural language                                |
+| Context         | Information already known about the user or environment                            |
+| Knowledge Base  | Structured data used by the AI to answer questions                                 |
+| Session         | Temporary anonymous interaction stored in the browser                              |
+| Quick Action    | One-tap shortcut that starts a predefined AI conversation                          |
+| MVP             | Minimum Viable Product                                                             |
+| ETA             | Estimated Time of Arrival                                                          |
 
 ---
 
@@ -82,14 +82,14 @@ The following capabilities are intentionally excluded from Version 1.0.
 
 # Risks and Mitigation
 
-| Risk | Impact | Mitigation |
-|------|--------|------------|
-| AI Hallucination | Incorrect guidance | Restrict AI to trusted knowledge base and predefined tools |
-| Network Failure | AI unavailable | Provide offline FAQs and venue information |
-| Incorrect User Input | Wrong recommendations | Ask targeted clarification questions |
-| Large Prompt Context | Increased latency | Use lightweight contextual memory |
-| API Rate Limits | Delayed responses | Cache common knowledge and implement graceful retries |
-| Demo Environment Failure | Interrupted presentation | Ship local demo data and offline fallbacks |
+| Risk                     | Impact                   | Mitigation                                                 |
+| ------------------------ | ------------------------ | ---------------------------------------------------------- |
+| AI Hallucination         | Incorrect guidance       | Restrict AI to trusted knowledge base and predefined tools |
+| Network Failure          | AI unavailable           | Provide offline FAQs and venue information                 |
+| Incorrect User Input     | Wrong recommendations    | Ask targeted clarification questions                       |
+| Large Prompt Context     | Increased latency        | Use lightweight contextual memory                          |
+| API Rate Limits          | Delayed responses        | Cache common knowledge and implement graceful retries      |
+| Demo Environment Failure | Interrupted presentation | Ship local demo data and offline fallbacks                 |
 
 ---
 
@@ -139,16 +139,16 @@ The following capabilities are intentionally excluded from Version 1.0.
 
 # AI Agent Responsibility Matrix
 
-| Agent | Primary Responsibility | Example Requests |
-|--------|------------------------|------------------|
-| Navigation Agent | Indoor routing | "Take me to my seat." |
-| Food Agent | Ordering & recommendations | "I'm hungry." |
-| Emergency Agent | Incident handling | "Someone collapsed." |
-| Translation Agent | Multilingual communication | "Translate this." |
-| Match Agent | Event information | "Who scored?" |
-| Venue Agent | Facility discovery | "Nearest restroom?" |
-| Transport Agent | Arrival & departure | "Best exit?" |
-| Lost & Found Agent | Item reporting | "I lost my backpack." |
+| Agent              | Primary Responsibility     | Example Requests      |
+| ------------------ | -------------------------- | --------------------- |
+| Navigation Agent   | Indoor routing             | "Take me to my seat." |
+| Food Agent         | Ordering & recommendations | "I'm hungry."         |
+| Emergency Agent    | Incident handling          | "Someone collapsed."  |
+| Translation Agent  | Multilingual communication | "Translate this."     |
+| Match Agent        | Event information          | "Who scored?"         |
+| Venue Agent        | Facility discovery         | "Nearest restroom?"   |
+| Transport Agent    | Arrival & departure        | "Best exit?"          |
+| Lost & Found Agent | Item reporting             | "I lost my backpack." |
 
 ---
 

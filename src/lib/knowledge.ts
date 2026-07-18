@@ -71,7 +71,6 @@ export function findRoute(stadiumId: string, to: string): Route | undefined {
   const stadiumRoutes = getRoutes(stadiumId);
   const normalizedTo = to.toLowerCase();
   return (
-    stadiumRoutes.find((route) => route.to.toLowerCase().includes(normalizedTo)) ??
-    stadiumRoutes[0]
+    stadiumRoutes.find((route) => route.to.toLowerCase().includes(normalizedTo)) ?? stadiumRoutes[0]
   );
 }

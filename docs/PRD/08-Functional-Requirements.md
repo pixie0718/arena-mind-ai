@@ -12,19 +12,19 @@ Each requirement is assigned a unique identifier for traceability during develop
 
 # Functional Modules
 
-| Module | Description | Priority |
-|---------|-------------|----------|
-| Authentication | Anonymous session or optional login | High |
-| AI Assistant | Conversational interface | Critical |
-| Navigation | Seat and venue navigation | Critical |
-| Food Ordering | Food discovery and simulated ordering | High |
-| Emergency SOS | Emergency assistance workflow | Critical |
-| Lost & Found | Report and track lost items | High |
-| Translation | AI-powered multilingual assistance | High |
-| Match Information | Match details and FAQs | Medium |
-| Transportation | Arrival and exit guidance | High |
-| Accessibility | Accessible routes and assistance | Critical |
-| Notifications | Context-aware reminders | Medium |
+| Module            | Description                           | Priority |
+| ----------------- | ------------------------------------- | -------- |
+| Authentication    | Anonymous session or optional login   | High     |
+| AI Assistant      | Conversational interface              | Critical |
+| Navigation        | Seat and venue navigation             | Critical |
+| Food Ordering     | Food discovery and simulated ordering | High     |
+| Emergency SOS     | Emergency assistance workflow         | Critical |
+| Lost & Found      | Report and track lost items           | High     |
+| Translation       | AI-powered multilingual assistance    | High     |
+| Match Information | Match details and FAQs                | Medium   |
+| Transportation    | Arrival and exit guidance             | High     |
+| Accessibility     | Accessible routes and assistance      | Critical |
+| Notifications     | Context-aware reminders               | Medium   |
 
 ---
 
@@ -330,28 +330,28 @@ Users should receive a clear message that AI functionality is temporarily unavai
 
 # Functional Requirement Summary
 
-| ID | Module | Priority |
-|----|---------|----------|
-| FR-001 | Anonymous Session | High |
-| FR-002 | Ticket Linking | High |
-| FR-003 | AI Chat | Critical |
-| FR-004 | Intent Detection | Critical |
-| FR-005 | Navigation | Critical |
-| FR-006 | Seat Assistance | Critical |
-| FR-007 | Food Ordering | High |
-| FR-008 | Emergency SOS | Critical |
-| FR-009 | Lost & Found | High |
-| FR-010 | Translation | High |
-| FR-011 | Match Information | Medium |
-| FR-012 | Transportation | High |
-| FR-013 | Accessibility | Critical |
-| FR-014 | Venue Information | Medium |
-| FR-015 | Recommendations | High |
-| FR-016 | Notifications | Medium |
-| FR-017 | Memory | High |
-| FR-018 | Error Recovery | Critical |
-| FR-019 | Session Management | High |
-| FR-020 | Offline Mode | Medium |
+| ID     | Module             | Priority |
+| ------ | ------------------ | -------- |
+| FR-001 | Anonymous Session  | High     |
+| FR-002 | Ticket Linking     | High     |
+| FR-003 | AI Chat            | Critical |
+| FR-004 | Intent Detection   | Critical |
+| FR-005 | Navigation         | Critical |
+| FR-006 | Seat Assistance    | Critical |
+| FR-007 | Food Ordering      | High     |
+| FR-008 | Emergency SOS      | Critical |
+| FR-009 | Lost & Found       | High     |
+| FR-010 | Translation        | High     |
+| FR-011 | Match Information  | Medium   |
+| FR-012 | Transportation     | High     |
+| FR-013 | Accessibility      | Critical |
+| FR-014 | Venue Information  | Medium   |
+| FR-015 | Recommendations    | High     |
+| FR-016 | Notifications      | Medium   |
+| FR-017 | Memory             | High     |
+| FR-018 | Error Recovery     | Critical |
+| FR-019 | Session Management | High     |
+| FR-020 | Offline Mode       | Medium   |
 
 ---
 

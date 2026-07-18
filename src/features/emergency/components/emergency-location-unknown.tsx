@@ -13,7 +13,10 @@ interface EmergencyLocationUnknownProps {
  * Asks only for the one genuinely missing piece — never re-asks category
  * (already known) or anything else already established.
  */
-export function EmergencyLocationUnknown({ metadata, onSuggestedAction }: EmergencyLocationUnknownProps) {
+export function EmergencyLocationUnknown({
+  metadata,
+  onSuggestedAction,
+}: EmergencyLocationUnknownProps) {
   return (
     <div className="ml-9 flex max-w-sm flex-col gap-2.5">
       <EmergencyHeaderBanner category={metadata.category} />

@@ -1,13 +1,14 @@
-
 # 04. Knowledge Base Architecture
 
 Version: 1.0
 
 ## Overview
+
 The Knowledge Base (KB) is the trusted source of structured information used by ArenaMind AI.
 Instead of relying on the LLM's memory, every user request should retrieve relevant data from the KB first and then generate a grounded response.
 
 ## Goals
+
 - Ground AI responses with trusted data
 - Keep the MVP backend-light
 - Allow future replacement of JSON with APIs
@@ -33,6 +34,7 @@ src/
 ## Collection Schema
 
 ### stadiums
+
 - id
 - name
 - city
@@ -42,6 +44,7 @@ src/
 - emergency_points
 
 ### facilities
+
 - id
 - stadium_id
 - type
@@ -50,6 +53,7 @@ src/
 - coordinates
 
 ### vendors
+
 - id
 - name
 - category
@@ -57,6 +61,7 @@ src/
 - menu
 
 ### matches
+
 - id
 - stadium_id
 - date
@@ -83,9 +88,11 @@ Generate Response
 ## Example
 
 User:
+
 > "Where is Gate B?"
 
 Flow:
+
 1. Detect navigation intent
 2. Load stadium metadata
 3. Find Gate B

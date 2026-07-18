@@ -10,7 +10,10 @@ interface EmergencyInfoGridProps {
 }
 
 function EmergencyInfoGridImpl({ metadata }: EmergencyInfoGridProps) {
-  const seatBits = [metadata.location.row && `Row ${metadata.location.row}`, metadata.location.seat && `Seat ${metadata.location.seat}`]
+  const seatBits = [
+    metadata.location.row && `Row ${metadata.location.row}`,
+    metadata.location.seat && `Seat ${metadata.location.seat}`,
+  ]
     .filter(Boolean)
     .join(", ");
 
@@ -18,7 +21,9 @@ function EmergencyInfoGridImpl({ metadata }: EmergencyInfoGridProps) {
     {
       icon: MapPin,
       label: "Your Location",
-      value: seatBits ? `${metadata.location.sectionLabel} — ${seatBits}` : metadata.location.sectionLabel,
+      value: seatBits
+        ? `${metadata.location.sectionLabel} — ${seatBits}`
+        : metadata.location.sectionLabel,
     },
     {
       icon: Clock,
@@ -43,7 +48,9 @@ function EmergencyInfoGridImpl({ metadata }: EmergencyInfoGridProps) {
           <CardContent className="flex items-start gap-2">
             <tile.icon className="mt-0.5 size-3.5 shrink-0 text-destructive" aria-hidden="true" />
             <div className="flex min-w-0 flex-col gap-0.5">
-              <span className="text-[10px] uppercase tracking-wide text-muted-foreground">{tile.label}</span>
+              <span className="text-[10px] uppercase tracking-wide text-muted-foreground">
+                {tile.label}
+              </span>
               <span className="truncate text-xs font-medium text-foreground">{tile.value}</span>
             </div>
           </CardContent>

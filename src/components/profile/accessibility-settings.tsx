@@ -18,7 +18,11 @@ const TOGGLES: { key: keyof AccessibilityPreferences; label: string; description
     label: "High contrast",
     description: "Stronger outlines on the stadium map for low-vision visibility.",
   },
-  { key: "voiceFirst", label: "Voice-first", description: "Optimizes responses for screen readers and voice output." },
+  {
+    key: "voiceFirst",
+    label: "Voice-first",
+    description: "Optimizes responses for screen readers and voice output.",
+  },
 ];
 
 /**
@@ -41,7 +45,9 @@ export function AccessibilitySettings() {
           <Accessibility className="size-4 text-secondary" aria-hidden="true" />
           Accessibility
         </CardTitle>
-        <CardDescription>Applied across chat, the stadium map, and emergency responses.</CardDescription>
+        <CardDescription>
+          Applied across chat, the stadium map, and emergency responses.
+        </CardDescription>
       </CardHeader>
       <CardContent className="flex flex-col gap-1">
         {TOGGLES.map((toggle_) => {
@@ -63,7 +69,9 @@ export function AccessibilitySettings() {
                 <span
                   className={cn(
                     "relative h-7 w-12 rounded-full border transition-colors",
-                    isOn ? "glow-primary border-primary/40 bg-primary/70" : "border-border bg-input",
+                    isOn
+                      ? "glow-primary border-primary/40 bg-primary/70"
+                      : "border-border bg-input",
                   )}
                 >
                   <span

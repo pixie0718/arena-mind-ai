@@ -30,7 +30,11 @@ export function crowdLabel(level: CrowdLevel, language: string | undefined): str
 // Feminine agreement for "afluencia" ("moderado" would be grammatically
 // wrong Spanish next to a feminine noun — the standalone badge label
 // stays masculine since it has no noun to agree with).
-const CROWD_ADJECTIVE_ES: Record<CrowdLevel, string> = { low: "baja", moderate: "moderada", high: "alta" };
+const CROWD_ADJECTIVE_ES: Record<CrowdLevel, string> = {
+  low: "baja",
+  moderate: "moderada",
+  high: "alta",
+};
 
 export function crowdAdjective(level: CrowdLevel, language: string | undefined): string {
   const resolved = resolveReplyLanguage(language);
@@ -166,7 +170,12 @@ export const t = {
       },
       language,
     ),
-  transportBestPick: (language: string | undefined, name: string, minutes: number, reason: string) =>
+  transportBestPick: (
+    language: string | undefined,
+    name: string,
+    minutes: number,
+    reason: string,
+  ) =>
     pick(
       {
         en: `${name} is your fastest option — about ${minutes} min. ${reason}`,
@@ -296,7 +305,7 @@ export const t = {
       {
         en: ' Want exact seat directions? Tell me your row and seat number, e.g. "Row F, Seat 18".',
         es: ' ¿Quieres indicaciones exactas hasta tu asiento? Dime tu fila y número de asiento, p. ej. "Fila F, Asiento 18".',
-        fr: ' Vous voulez un itinéraire précis jusqu\'à votre siège ? Indiquez-moi votre rangée et votre numéro de siège, ex. « Rangée F, Siège 18 ».',
+        fr: " Vous voulez un itinéraire précis jusqu'à votre siège ? Indiquez-moi votre rangée et votre numéro de siège, ex. « Rangée F, Siège 18 ».",
       },
       language,
     ),

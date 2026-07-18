@@ -38,9 +38,7 @@ function extractItem(input: string): string | undefined {
  * idea where the item was lost, when we already know the visitor's seat
  * from earlier in the conversation.
  */
-function describeLinkedLocation(
-  linkedTicket: AgentRequest["context"]["linkedTicket"],
-): string {
+function describeLinkedLocation(linkedTicket: AgentRequest["context"]["linkedTicket"]): string {
   if (!linkedTicket) return "unspecified";
   const parts = [`Section ${linkedTicket.block}`];
   if (linkedTicket.row) parts.push(`Row ${linkedTicket.row}`);

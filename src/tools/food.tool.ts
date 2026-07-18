@@ -11,10 +11,7 @@ const inputSchema = z.object({
 
 export type FoodSearchInput = z.infer<typeof inputSchema>;
 
-async function execute(
-  rawInput: unknown,
-  context: ToolContext,
-): Promise<ToolResult<Vendor[]>> {
+async function execute(rawInput: unknown, context: ToolContext): Promise<ToolResult<Vendor[]>> {
   const input = inputSchema.parse(rawInput ?? {});
   const vendors = getVendors(context.stadiumId);
   const query = input.query?.toLowerCase();
@@ -44,10 +41,11 @@ async function execute(
       menuNames.some((name) => query.includes(name)) ||
       // ...or a meaningful word from a natural sentence appears in the
       // vendor/menu name ("I want a burger" -> "Burger Express").
-      queryWords.some((word) => vendorName.includes(word) || menuNames.some((name) => name.includes(word)));
+      queryWords.some(
+        (word) => vendorName.includes(word) || menuNames.some((name) => name.includes(word)),
+      );
 
-    const matchesDietary =
-      !dietary || vendor.menu.some((item) => item.dietary?.includes(dietary));
+    const matchesDietary = !dietary || vendor.menu.some((item) => item.dietary?.includes(dietary));
 
     return matchesQuery && matchesDietary;
   });

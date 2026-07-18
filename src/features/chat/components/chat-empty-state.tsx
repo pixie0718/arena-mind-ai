@@ -21,7 +21,9 @@ export function ChatEmptyState({ onSelectPrompt }: ChatEmptyStateProps) {
           <Goal className="size-8" />
         </span>
         <div className="flex flex-col gap-1">
-          <p className="text-xs font-semibold uppercase tracking-[0.35em] text-secondary">Kickoff</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.35em] text-secondary">
+            Kickoff
+          </p>
           <h1 className="font-heading bg-gradient-to-b from-foreground to-foreground/70 bg-clip-text text-4xl leading-none tracking-wide text-transparent">
             Hi, I&apos;m ArenaMind
           </h1>

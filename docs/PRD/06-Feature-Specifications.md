@@ -14,19 +14,19 @@ This chapter defines every feature included in the Minimum Viable Product (MVP).
 
 # Feature List
 
-| ID | Feature | Priority |
-|----|----------|----------|
-| F-01 | AI Stadium Assistant | Critical |
-| F-02 | Smart Seat Navigation | Critical |
-| F-03 | Food Ordering | High |
-| F-04 | Emergency SOS | Critical |
-| F-05 | Lost & Found | High |
-| F-06 | AI Translation | High |
-| F-07 | Match Information | Medium |
-| F-08 | Transportation Assistant | High |
-| F-09 | Accessibility Assistant | Critical |
-| F-10 | Venue Information | Medium |
-| F-11 | Smart Recommendations | High |
+| ID   | Feature                  | Priority |
+| ---- | ------------------------ | -------- |
+| F-01 | AI Stadium Assistant     | Critical |
+| F-02 | Smart Seat Navigation    | Critical |
+| F-03 | Food Ordering            | High     |
+| F-04 | Emergency SOS            | Critical |
+| F-05 | Lost & Found             | High     |
+| F-06 | AI Translation           | High     |
+| F-07 | Match Information        | Medium   |
+| F-08 | Transportation Assistant | High     |
+| F-09 | Accessibility Assistant  | Critical |
+| F-10 | Venue Information        | Medium   |
+| F-11 | Smart Recommendations    | High     |
 
 ---
 

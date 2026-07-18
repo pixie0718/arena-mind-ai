@@ -3,12 +3,7 @@
   "name": "Estadio Azteca",
   "svgUrl": "/stadiums/azteca.svg",
   "viewBox": "0 0 1000 700",
-  "gates": [
-    "A",
-    "B",
-    "C",
-    "D"
-  ],
+  "gates": ["A", "B", "C", "D"],
   "sections": [
     {
       "id": "210",

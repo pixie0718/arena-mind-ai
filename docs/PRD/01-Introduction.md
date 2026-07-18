@@ -141,11 +141,13 @@ The assistant must provide reliable information while clearly distinguishing bet
 For example:
 
 Confirmed:
+
 - Seat location
 - Match timing
 - Gate information
 
 Recommendations:
+
 - Best food stall
 - Least crowded exit
 - Fastest transport option

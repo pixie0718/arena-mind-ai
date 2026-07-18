@@ -18,7 +18,7 @@ All findings below were verified by actually running the app (Next.js dev server
 
 ### 2. Switch toggles were 28px tall — under the 48px touch-target minimum
 
-**Root cause:** `AccessibilitySettings`'s toggle `<button>` was `h-7 w-12` (28×48px) with the visual switch pill *as* the clickable area — no separate hit-slop.
+**Root cause:** `AccessibilitySettings`'s toggle `<button>` was `h-7 w-12` (28×48px) with the visual switch pill _as_ the clickable area — no separate hit-slop.
 
 **Fix:** Wrapped the visual switch pill in a `flex h-12 w-12 items-center justify-center` button, so the tap target is 48×48 while the switch itself looks identical. Measured post-fix: exactly 48×48px.
 
@@ -27,7 +27,7 @@ All findings below were verified by actually running the app (Next.js dev server
 ### 3. Six more touch targets under 48px, found via a full bounding-box sweep of every button/link on every screen
 
 - Chat composer send button (32×32 → 48×48)
-- Home page hero-search send button (32×32 → 48×48, this is a *separate* component from #1, easy to miss)
+- Home page hero-search send button (32×32 → 48×48, this is a _separate_ component from #1, easy to miss)
 - Chat header "Clear conversation" button (28×28 → 48×48)
 - Stadium map zoom in/out/reset/back-to-section controls (28×28 → 48×48 each)
 - Profile "Save & Tell Assistant" button (32px tall → 48px min-height)
@@ -113,8 +113,8 @@ Zero horizontal overflow across all 7 requested breakpoints × all 5 routes. Des
 
 ## Remaining known limitations (unchanged from before this pass, disclosed, not fixed because fixing them would mean building new features against this session's explicit feature freeze)
 
-- **Update (post-RC1):** Intent classification now calls Groq (`openai/gpt-oss-120b`) with structured output, with the original keyword heuristic kept as an automatic fallback on any model error/timeout/quota issue — see `src/ai/intent-engine.ts`. This means intent-level typos and paraphrases (e.g. "charge my phone" routing to venue, or "Sction 102" still routing to navigation) are now understood semantically. The hard keyword-based emergency safety override is preserved on top of both paths, so a real emergency keyword always wins regardless of what the LLM returns. Entity extraction *within* each agent (e.g. `parseSeatQuery` pulling a section number out of "Sction 102") is still regex-based and unaffected by this change — a typo'd section number still won't be extracted, so the agent will ask for clarification instead of silently getting it wrong.
-- Only English input is understood by the intent engine; the language preference controls the AI's *output* language, not input comprehension.
+- **Update (post-RC1):** Intent classification now calls Groq (`openai/gpt-oss-120b`) with structured output, with the original keyword heuristic kept as an automatic fallback on any model error/timeout/quota issue — see `src/ai/intent-engine.ts`. This means intent-level typos and paraphrases (e.g. "charge my phone" routing to venue, or "Sction 102" still routing to navigation) are now understood semantically. The hard keyword-based emergency safety override is preserved on top of both paths, so a real emergency keyword always wins regardless of what the LLM returns. Entity extraction _within_ each agent (e.g. `parseSeatQuery` pulling a section number out of "Sction 102") is still regex-based and unaffected by this change — a typo'd section number still won't be extracted, so the agent will ask for clarification instead of silently getting it wrong.
+- Only English input is understood by the intent engine; the language preference controls the AI's _output_ language, not input comprehension.
 - Static UI chrome (card section headers like "NEAREST MEDICAL TEAM") and raw knowledge-base text (vendor notes) are not localized — only agent-generated reasoning/reply text is, per last session's explicit "no new translation system" constraint.
 - Deep re-render profiling (React DevTools flame graphs) was not performed — heap sampling and interaction-stress testing showed no leak or error signal, but this is not the same as a full render-count audit.
 

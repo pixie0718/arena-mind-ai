@@ -54,11 +54,23 @@ const ACTION_PROMPTS: Record<ActionKey, string> = {
 // is localized.
 const ACTION_LABELS: Record<ActionKey, Record<ReplyLanguage, string>> = {
   call_volunteer: { en: "Call Volunteer", es: "Llamar a un Voluntario", fr: "Appeler un Bénévole" },
-  show_medical_room: { en: "Show Nearest Medical Room", es: "Ver Sala Médica Más Cercana", fr: "Voir la Salle Médicale la Plus Proche" },
+  show_medical_room: {
+    en: "Show Nearest Medical Room",
+    es: "Ver Sala Médica Más Cercana",
+    fr: "Voir la Salle Médicale la Plus Proche",
+  },
   navigate_exit: { en: "Navigate to Exit", es: "Ir a la Salida", fr: "Aller à la Sortie" },
-  share_location: { en: "Share My Location", es: "Compartir Mi Ubicación", fr: "Partager Ma Position" },
+  share_location: {
+    en: "Share My Location",
+    es: "Compartir Mi Ubicación",
+    fr: "Partager Ma Position",
+  },
   find_security: { en: "Find Security", es: "Buscar Seguridad", fr: "Trouver la Sécurité" },
-  translate_phrase: { en: "Translate Emergency Phrase", es: "Traducir Frase de Emergencia", fr: "Traduire une Phrase d'Urgence" },
+  translate_phrase: {
+    en: "Translate Emergency Phrase",
+    es: "Traducir Frase de Emergencia",
+    fr: "Traduire une Phrase d'Urgence",
+  },
 };
 
 function action(key: ActionKey, language: ReplyLanguage): SuggestedAction {
@@ -73,59 +85,211 @@ interface CategoryText {
 
 const CATEGORY_TEXT: Record<Category, Record<ReplyLanguage, CategoryText>> = {
   medical: {
-    en: { acknowledge: "Medical help is being notified.", instructions: "Stay where you are if it's safe to do so.", contactInstructions: "A stadium volunteer has been notified and is heading to your section. Wave down any staff member in a yellow vest if you need help sooner." },
-    es: { acknowledge: "Se está notificando a ayuda médica.", instructions: "Quédate donde estás si es seguro hacerlo.", contactInstructions: "Un voluntario del estadio ha sido notificado y se dirige a tu sección. Haz señas a cualquier miembro del personal con chaleco amarillo si necesitas ayuda antes." },
-    fr: { acknowledge: "L'aide médicale a été notifiée.", instructions: "Restez où vous êtes si c'est sans danger.", contactInstructions: "Un bénévole du stade a été notifié et se dirige vers votre section. Faites signe à tout membre du personnel en gilet jaune si vous avez besoin d'aide plus tôt." },
+    en: {
+      acknowledge: "Medical help is being notified.",
+      instructions: "Stay where you are if it's safe to do so.",
+      contactInstructions:
+        "A stadium volunteer has been notified and is heading to your section. Wave down any staff member in a yellow vest if you need help sooner.",
+    },
+    es: {
+      acknowledge: "Se está notificando a ayuda médica.",
+      instructions: "Quédate donde estás si es seguro hacerlo.",
+      contactInstructions:
+        "Un voluntario del estadio ha sido notificado y se dirige a tu sección. Haz señas a cualquier miembro del personal con chaleco amarillo si necesitas ayuda antes.",
+    },
+    fr: {
+      acknowledge: "L'aide médicale a été notifiée.",
+      instructions: "Restez où vous êtes si c'est sans danger.",
+      contactInstructions:
+        "Un bénévole du stade a été notifié et se dirige vers votre section. Faites signe à tout membre du personnel en gilet jaune si vous avez besoin d'aide plus tôt.",
+    },
   },
   injury: {
-    en: { acknowledge: "I've flagged this as an injury.", instructions: "Try to keep the injured person still and comfortable.", contactInstructions: "A medical team has been alerted to your section. Flag down any staff member in a yellow vest if the situation changes." },
-    es: { acknowledge: "He marcado esto como una lesión.", instructions: "Intenta mantener a la persona lesionada quieta y cómoda.", contactInstructions: "Un equipo médico ha sido alertado en tu sección. Haz señas a cualquier miembro del personal con chaleco amarillo si la situación cambia." },
-    fr: { acknowledge: "J'ai signalé ceci comme une blessure.", instructions: "Essayez de garder la personne blessée immobile et confortable.", contactInstructions: "Une équipe médicale a été alertée dans votre section. Faites signe à tout membre du personnel en gilet jaune si la situation change." },
+    en: {
+      acknowledge: "I've flagged this as an injury.",
+      instructions: "Try to keep the injured person still and comfortable.",
+      contactInstructions:
+        "A medical team has been alerted to your section. Flag down any staff member in a yellow vest if the situation changes.",
+    },
+    es: {
+      acknowledge: "He marcado esto como una lesión.",
+      instructions: "Intenta mantener a la persona lesionada quieta y cómoda.",
+      contactInstructions:
+        "Un equipo médico ha sido alertado en tu sección. Haz señas a cualquier miembro del personal con chaleco amarillo si la situación cambia.",
+    },
+    fr: {
+      acknowledge: "J'ai signalé ceci comme une blessure.",
+      instructions: "Essayez de garder la personne blessée immobile et confortable.",
+      contactInstructions:
+        "Une équipe médicale a été alertée dans votre section. Faites signe à tout membre du personnel en gilet jaune si la situation change.",
+    },
   },
   fire: {
-    en: { acknowledge: "Fire response has been alerted.", instructions: "Move calmly toward the nearest marked exit — do not use elevators.", contactInstructions: "Stadium safety staff have been notified. Follow any instructions from staff or public address announcements." },
-    es: { acknowledge: "Se ha alertado a la respuesta contra incendios.", instructions: "Muévete con calma hacia la salida marcada más cercana — no uses los elevadores.", contactInstructions: "El personal de seguridad del estadio ha sido notificado. Sigue las instrucciones del personal o los anuncios por altavoz." },
-    fr: { acknowledge: "L'équipe incendie a été alertée.", instructions: "Dirigez-vous calmement vers la sortie balisée la plus proche — n'utilisez pas les ascenseurs.", contactInstructions: "Le personnel de sécurité du stade a été notifié. Suivez les instructions du personnel ou les annonces au haut-parleur." },
+    en: {
+      acknowledge: "Fire response has been alerted.",
+      instructions: "Move calmly toward the nearest marked exit — do not use elevators.",
+      contactInstructions:
+        "Stadium safety staff have been notified. Follow any instructions from staff or public address announcements.",
+    },
+    es: {
+      acknowledge: "Se ha alertado a la respuesta contra incendios.",
+      instructions:
+        "Muévete con calma hacia la salida marcada más cercana — no uses los elevadores.",
+      contactInstructions:
+        "El personal de seguridad del estadio ha sido notificado. Sigue las instrucciones del personal o los anuncios por altavoz.",
+    },
+    fr: {
+      acknowledge: "L'équipe incendie a été alertée.",
+      instructions:
+        "Dirigez-vous calmement vers la sortie balisée la plus proche — n'utilisez pas les ascenseurs.",
+      contactInstructions:
+        "Le personnel de sécurité du stade a été notifié. Suivez les instructions du personnel ou les annonces au haut-parleur.",
+    },
   },
   crowd: {
-    en: { acknowledge: "Crowd safety has been alerted.", instructions: "Move sideways out of the crowd flow rather than against it, toward the nearest marked exit.", contactInstructions: "Stadium safety staff have been notified of the crowding in your area." },
-    es: { acknowledge: "Se ha alertado a seguridad de multitudes.", instructions: "Muévete lateralmente para salir del flujo de la multitud, en lugar de contra él, hacia la salida marcada más cercana.", contactInstructions: "El personal de seguridad del estadio ha sido notificado de la aglomeración en tu área." },
-    fr: { acknowledge: "La sécurité de la foule a été alertée.", instructions: "Déplacez-vous latéralement hors du flux de la foule plutôt qu'à contre-courant, vers la sortie balisée la plus proche.", contactInstructions: "Le personnel de sécurité du stade a été informé de l'affluence dans votre zone." },
+    en: {
+      acknowledge: "Crowd safety has been alerted.",
+      instructions:
+        "Move sideways out of the crowd flow rather than against it, toward the nearest marked exit.",
+      contactInstructions: "Stadium safety staff have been notified of the crowding in your area.",
+    },
+    es: {
+      acknowledge: "Se ha alertado a seguridad de multitudes.",
+      instructions:
+        "Muévete lateralmente para salir del flujo de la multitud, en lugar de contra él, hacia la salida marcada más cercana.",
+      contactInstructions:
+        "El personal de seguridad del estadio ha sido notificado de la aglomeración en tu área.",
+    },
+    fr: {
+      acknowledge: "La sécurité de la foule a été alertée.",
+      instructions:
+        "Déplacez-vous latéralement hors du flux de la foule plutôt qu'à contre-courant, vers la sortie balisée la plus proche.",
+      contactInstructions:
+        "Le personnel de sécurité du stade a été informé de l'affluence dans votre zone.",
+    },
   },
   security: {
-    en: { acknowledge: "Security has been alerted.", instructions: "Move away from the situation if you can do so safely.", contactInstructions: "Stadium security has been notified and is responding to your section." },
-    es: { acknowledge: "Se ha alertado a seguridad.", instructions: "Aléjate de la situación si puedes hacerlo de forma segura.", contactInstructions: "La seguridad del estadio ha sido notificada y está respondiendo a tu sección." },
-    fr: { acknowledge: "La sécurité a été alertée.", instructions: "Éloignez-vous de la situation si vous pouvez le faire en toute sécurité.", contactInstructions: "La sécurité du stade a été notifiée et intervient dans votre section." },
+    en: {
+      acknowledge: "Security has been alerted.",
+      instructions: "Move away from the situation if you can do so safely.",
+      contactInstructions: "Stadium security has been notified and is responding to your section.",
+    },
+    es: {
+      acknowledge: "Se ha alertado a seguridad.",
+      instructions: "Aléjate de la situación si puedes hacerlo de forma segura.",
+      contactInstructions:
+        "La seguridad del estadio ha sido notificada y está respondiendo a tu sección.",
+    },
+    fr: {
+      acknowledge: "La sécurité a été alertée.",
+      instructions: "Éloignez-vous de la situation si vous pouvez le faire en toute sécurité.",
+      contactInstructions: "La sécurité du stade a été notifiée et intervient dans votre section.",
+    },
   },
   suspicious_activity: {
-    en: { acknowledge: "This has been flagged to security.", instructions: "Do not touch or approach anything suspicious — keep a safe distance.", contactInstructions: "Stadium security has been notified and will assess your section." },
-    es: { acknowledge: "Esto ha sido reportado a seguridad.", instructions: "No toques ni te acerques a nada sospechoso — mantén una distancia segura.", contactInstructions: "La seguridad del estadio ha sido notificada y evaluará tu sección." },
-    fr: { acknowledge: "Ceci a été signalé à la sécurité.", instructions: "Ne touchez ni n'approchez rien de suspect — gardez une distance de sécurité.", contactInstructions: "La sécurité du stade a été notifiée et évaluera votre section." },
+    en: {
+      acknowledge: "This has been flagged to security.",
+      instructions: "Do not touch or approach anything suspicious — keep a safe distance.",
+      contactInstructions: "Stadium security has been notified and will assess your section.",
+    },
+    es: {
+      acknowledge: "Esto ha sido reportado a seguridad.",
+      instructions: "No toques ni te acerques a nada sospechoso — mantén una distancia segura.",
+      contactInstructions: "La seguridad del estadio ha sido notificada y evaluará tu sección.",
+    },
+    fr: {
+      acknowledge: "Ceci a été signalé à la sécurité.",
+      instructions: "Ne touchez ni n'approchez rien de suspect — gardez une distance de sécurité.",
+      contactInstructions: "La sécurité du stade a été notifiée et évaluera votre section.",
+    },
   },
   lost_child: {
-    en: { acknowledge: "Lost-child alert sent to staff.", instructions: "Stay in a visible, well-lit spot near your section so staff can find you.", contactInstructions: "Stadium staff have been alerted and will begin checking nearby family/help points." },
-    es: { acknowledge: "Alerta de niño perdido enviada al personal.", instructions: "Permanece en un lugar visible y bien iluminado cerca de tu sección para que el personal pueda encontrarte.", contactInstructions: "El personal del estadio ha sido alertado y comenzará a revisar los puntos de ayuda familiar cercanos." },
-    fr: { acknowledge: "Alerte enfant perdu envoyée au personnel.", instructions: "Restez dans un endroit visible et bien éclairé près de votre section pour que le personnel puisse vous trouver.", contactInstructions: "Le personnel du stade a été alerté et va vérifier les points d'aide famille à proximité." },
+    en: {
+      acknowledge: "Lost-child alert sent to staff.",
+      instructions: "Stay in a visible, well-lit spot near your section so staff can find you.",
+      contactInstructions:
+        "Stadium staff have been alerted and will begin checking nearby family/help points.",
+    },
+    es: {
+      acknowledge: "Alerta de niño perdido enviada al personal.",
+      instructions:
+        "Permanece en un lugar visible y bien iluminado cerca de tu sección para que el personal pueda encontrarte.",
+      contactInstructions:
+        "El personal del estadio ha sido alertado y comenzará a revisar los puntos de ayuda familiar cercanos.",
+    },
+    fr: {
+      acknowledge: "Alerte enfant perdu envoyée au personnel.",
+      instructions:
+        "Restez dans un endroit visible et bien éclairé près de votre section pour que le personnel puisse vous trouver.",
+      contactInstructions:
+        "Le personnel du stade a été alerté et va vérifier les points d'aide famille à proximité.",
+    },
   },
   volunteer_request: {
-    en: { acknowledge: "A volunteer is being sent your way.", instructions: "Stay near your section so the volunteer can find you.", contactInstructions: "A stadium volunteer has been notified of your request." },
-    es: { acknowledge: "Se está enviando un voluntario hacia ti.", instructions: "Permanece cerca de tu sección para que el voluntario pueda encontrarte.", contactInstructions: "Un voluntario del estadio ha sido notificado de tu solicitud." },
-    fr: { acknowledge: "Un bénévole est envoyé vers vous.", instructions: "Restez près de votre section pour que le bénévole puisse vous trouver.", contactInstructions: "Un bénévole du stade a été notifié de votre demande." },
+    en: {
+      acknowledge: "A volunteer is being sent your way.",
+      instructions: "Stay near your section so the volunteer can find you.",
+      contactInstructions: "A stadium volunteer has been notified of your request.",
+    },
+    es: {
+      acknowledge: "Se está enviando un voluntario hacia ti.",
+      instructions: "Permanece cerca de tu sección para que el voluntario pueda encontrarte.",
+      contactInstructions: "Un voluntario del estadio ha sido notificado de tu solicitud.",
+    },
+    fr: {
+      acknowledge: "Un bénévole est envoyé vers vous.",
+      instructions: "Restez près de votre section pour que le bénévole puisse vous trouver.",
+      contactInstructions: "Un bénévole du stade a été notifié de votre demande.",
+    },
   },
   wheelchair_assistance: {
-    en: { acknowledge: "Wheelchair assistance is being arranged.", instructions: "Stay where you are — an accessible route will be arranged to meet you.", contactInstructions: "A stadium volunteer trained in accessibility assistance has been notified." },
-    es: { acknowledge: "Se está organizando asistencia en silla de ruedas.", instructions: "Permanece donde estás — se organizará una ruta accesible para encontrarte.", contactInstructions: "Un voluntario del estadio capacitado en asistencia de accesibilidad ha sido notificado." },
-    fr: { acknowledge: "Une assistance en fauteuil roulant est organisée.", instructions: "Restez où vous êtes — un itinéraire accessible sera organisé pour vous rejoindre.", contactInstructions: "Un bénévole du stade formé à l'assistance accessibilité a été notifié." },
+    en: {
+      acknowledge: "Wheelchair assistance is being arranged.",
+      instructions: "Stay where you are — an accessible route will be arranged to meet you.",
+      contactInstructions:
+        "A stadium volunteer trained in accessibility assistance has been notified.",
+    },
+    es: {
+      acknowledge: "Se está organizando asistencia en silla de ruedas.",
+      instructions: "Permanece donde estás — se organizará una ruta accesible para encontrarte.",
+      contactInstructions:
+        "Un voluntario del estadio capacitado en asistencia de accesibilidad ha sido notificado.",
+    },
+    fr: {
+      acknowledge: "Une assistance en fauteuil roulant est organisée.",
+      instructions:
+        "Restez où vous êtes — un itinéraire accessible sera organisé pour vous rejoindre.",
+      contactInstructions: "Un bénévole du stade formé à l'assistance accessibilité a été notifié.",
+    },
   },
   unspecified: {
-    en: { acknowledge: "Emergency assistance has been requested.", instructions: "Stay where you are if it's safe to do so.", contactInstructions: "A stadium volunteer has been notified and is heading your way." },
-    es: { acknowledge: "Se ha solicitado asistencia de emergencia.", instructions: "Quédate donde estás si es seguro hacerlo.", contactInstructions: "Un voluntario del estadio ha sido notificado y se dirige hacia ti." },
-    fr: { acknowledge: "Une assistance d'urgence a été demandée.", instructions: "Restez où vous êtes si c'est sans danger.", contactInstructions: "Un bénévole du stade a été notifié et se dirige vers vous." },
+    en: {
+      acknowledge: "Emergency assistance has been requested.",
+      instructions: "Stay where you are if it's safe to do so.",
+      contactInstructions: "A stadium volunteer has been notified and is heading your way.",
+    },
+    es: {
+      acknowledge: "Se ha solicitado asistencia de emergencia.",
+      instructions: "Quédate donde estás si es seguro hacerlo.",
+      contactInstructions: "Un voluntario del estadio ha sido notificado y se dirige hacia ti.",
+    },
+    fr: {
+      acknowledge: "Une assistance d'urgence a été demandée.",
+      instructions: "Restez où vous êtes si c'est sans danger.",
+      contactInstructions: "Un bénévole du stade a été notifié et se dirige vers vous.",
+    },
   },
 };
 
-const CATEGORY_ACTIONS: Record<Category, { primary: ActionKey; secondary: ActionKey; extra: ActionKey[] }> = {
-  medical: { primary: "show_medical_room", secondary: "call_volunteer", extra: ["share_location", "translate_phrase"] },
+const CATEGORY_ACTIONS: Record<
+  Category,
+  { primary: ActionKey; secondary: ActionKey; extra: ActionKey[] }
+> = {
+  medical: {
+    primary: "show_medical_room",
+    secondary: "call_volunteer",
+    extra: ["share_location", "translate_phrase"],
+  },
   injury: { primary: "show_medical_room", secondary: "call_volunteer", extra: ["share_location"] },
   fire: { primary: "navigate_exit", secondary: "share_location", extra: ["call_volunteer"] },
   crowd: { primary: "navigate_exit", secondary: "share_location", extra: ["call_volunteer"] },
@@ -133,8 +297,16 @@ const CATEGORY_ACTIONS: Record<Category, { primary: ActionKey; secondary: Action
   suspicious_activity: { primary: "find_security", secondary: "share_location", extra: [] },
   lost_child: { primary: "find_security", secondary: "call_volunteer", extra: ["share_location"] },
   volunteer_request: { primary: "call_volunteer", secondary: "share_location", extra: [] },
-  wheelchair_assistance: { primary: "call_volunteer", secondary: "navigate_exit", extra: ["share_location"] },
-  unspecified: { primary: "call_volunteer", secondary: "share_location", extra: ["find_security", "translate_phrase"] },
+  wheelchair_assistance: {
+    primary: "call_volunteer",
+    secondary: "navigate_exit",
+    extra: ["share_location"],
+  },
+  unspecified: {
+    primary: "call_volunteer",
+    secondary: "share_location",
+    extra: ["find_security", "translate_phrase"],
+  },
 };
 
 function buildCategoryScript(category: Category, language: ReplyLanguage): CategoryScript {
@@ -145,6 +317,106 @@ function buildCategoryScript(category: Category, language: ReplyLanguage): Categ
     primaryAction: action(actions.primary, language),
     secondaryAction: action(actions.secondary, language),
     suggestedActions: actions.extra.map((key) => action(key, language)),
+  };
+}
+
+/** section_known: a real medical team, exit, and ETA were resolved — never fabricated. */
+function buildResolvedResponse(
+  dispatch: Extract<EmergencyDispatchResult, { status: "section_known" }>,
+  script: CategoryScript,
+  language: ReplyLanguage,
+  category: Category,
+  location: { row?: string; seat?: string; stadiumId: string },
+  toolCalls: AgentResponse["toolCalls"],
+  incidentId: string,
+): AgentResponse {
+  const { section, nearestMedicalLabel, nearestExitLabel, etaMinutes } = dispatch;
+  const seatBits = t.seatBits(language, location.row, location.seat);
+  const routingExplanation = t.emergencyExitReason(language, nearestExitLabel, section.label);
+  const reply = t.emergencyHelpSummary(
+    language,
+    script.acknowledge,
+    section.label,
+    seatBits,
+    nearestMedicalLabel,
+    etaMinutes,
+    script.instructions,
+    routingExplanation,
+  );
+
+  const metadata: EmergencyMetadata = {
+    kind: "emergency",
+    status: "resolved",
+    category,
+    location: {
+      stadiumId: location.stadiumId,
+      sectionId: section.id,
+      sectionLabel: section.label,
+      row: location.row || undefined,
+      seat: location.seat || undefined,
+    },
+    nearestMedicalTeam: { name: nearestMedicalLabel, etaMinutes },
+    nearestExit: { label: nearestExitLabel, gate: section.gate },
+    instructions: script.instructions,
+    contactInstructions: script.contactInstructions,
+    routingExplanation,
+    primaryAction: script.primaryAction,
+    secondaryAction: script.secondaryAction,
+    incidentId,
+  };
+
+  return {
+    agentId: "emergency",
+    reply,
+    toolCalls,
+    suggestedActions: script.suggestedActions,
+    requiresClarification: false,
+    metadata: metadata as unknown as Record<string, unknown>,
+  };
+}
+
+/**
+ * section_not_found / stadium_only / unsupported_stadium / no tool — never
+ * fabricate a medical team or exit here, ask only for the section.
+ */
+function buildLocationUnknownResponse(
+  dispatch: EmergencyDispatchResult | undefined,
+  script: CategoryScript,
+  language: ReplyLanguage,
+  category: Category,
+  toolCalls: AgentResponse["toolCalls"],
+  incidentId: string,
+): AgentResponse {
+  const notFoundBit =
+    dispatch?.status === "section_not_found"
+      ? t.emergencyNotFoundBit(language, dispatch.query)
+      : "";
+  const venueBit =
+    dispatch?.status === "stadium_only" ? t.emergencyVenueBit(language, dispatch.stadiumName) : "";
+  const reply = t.emergencyLocationUnknown(
+    language,
+    script.acknowledge,
+    venueBit,
+    notFoundBit,
+    script.instructions,
+  );
+
+  const metadata: EmergencyMetadata = {
+    kind: "emergency",
+    status: "location_unknown",
+    category,
+    instructions: script.instructions,
+    incidentId,
+  };
+
+  return {
+    agentId: "emergency",
+    reply,
+    toolCalls,
+    suggestedActions: script.suggestedActions,
+    requiresClarification: true,
+    clarificationPrompt: t.emergencyClarifyPrompt(language),
+    metadata: metadata as unknown as Record<string, unknown>,
   };
 }
 
@@ -184,76 +456,18 @@ async function handle(request: AgentRequest): Promise<AgentResponse> {
   });
 
   if (dispatch?.status === "section_known") {
-    const { section, nearestMedicalLabel, nearestExitLabel, etaMinutes } = dispatch;
-    const seatBits = t.seatBits(language, row, seat);
-    const routingExplanation = t.emergencyExitReason(language, nearestExitLabel, section.label);
-    const reply = t.emergencyHelpSummary(
+    return buildResolvedResponse(
+      dispatch,
+      script,
       language,
-      script.acknowledge,
-      section.label,
-      seatBits,
-      nearestMedicalLabel,
-      etaMinutes,
-      script.instructions,
-      routingExplanation,
-    );
-
-    const metadata: EmergencyMetadata = {
-      kind: "emergency",
-      status: "resolved",
       category,
-      location: {
-        stadiumId,
-        sectionId: section.id,
-        sectionLabel: section.label,
-        row: row || undefined,
-        seat: seat || undefined,
-      },
-      nearestMedicalTeam: { name: nearestMedicalLabel, etaMinutes },
-      nearestExit: { label: nearestExitLabel, gate: section.gate },
-      instructions: script.instructions,
-      contactInstructions: script.contactInstructions,
-      routingExplanation,
-      primaryAction: script.primaryAction,
-      secondaryAction: script.secondaryAction,
-      incidentId,
-    };
-
-    return {
-      agentId: "emergency",
-      reply,
+      { row, seat, stadiumId },
       toolCalls,
-      suggestedActions: script.suggestedActions,
-      requiresClarification: false,
-      metadata: metadata as unknown as Record<string, unknown>,
-    };
+      incidentId,
+    );
   }
 
-  // section_not_found / stadium_only / unsupported_stadium / no tool —
-  // never fabricate a medical team or exit, ask only for the section.
-  const notFoundBit =
-    dispatch?.status === "section_not_found" ? t.emergencyNotFoundBit(language, dispatch.query) : "";
-  const venueBit =
-    dispatch?.status === "stadium_only" ? t.emergencyVenueBit(language, dispatch.stadiumName) : "";
-  const reply = t.emergencyLocationUnknown(language, script.acknowledge, venueBit, notFoundBit, script.instructions);
-
-  const metadata: EmergencyMetadata = {
-    kind: "emergency",
-    status: "location_unknown",
-    category,
-    instructions: script.instructions,
-    incidentId,
-  };
-
-  return {
-    agentId: "emergency",
-    reply,
-    toolCalls,
-    suggestedActions: script.suggestedActions,
-    requiresClarification: true,
-    clarificationPrompt: t.emergencyClarifyPrompt(language),
-    metadata: metadata as unknown as Record<string, unknown>,
-  };
+  return buildLocationUnknownResponse(dispatch, script, language, category, toolCalls, incidentId);
 }
 
 export const emergencyAgent: AgentDefinition = {

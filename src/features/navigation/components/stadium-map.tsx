@@ -55,7 +55,8 @@ export function StadiumMap({
         if (!cancelled) setSvgMarkup(markup);
       })
       .catch((error: unknown) => {
-        if (!cancelled) setSvgError(error instanceof Error ? error.message : "Could not load map artwork.");
+        if (!cancelled)
+          setSvgError(error instanceof Error ? error.message : "Could not load map artwork.");
       });
     return () => {
       cancelled = true;
@@ -108,7 +109,9 @@ export function StadiumMap({
   if (status === "error" || !config) {
     return (
       <div className={mapHeightClassName}>
-        <NavigationErrorState message={errorMessage ?? "We don't have an interactive map for this stadium yet."} />
+        <NavigationErrorState
+          message={errorMessage ?? "We don't have an interactive map for this stadium yet."}
+        />
       </div>
     );
   }
@@ -155,7 +158,10 @@ export function StadiumMap({
       </div>
 
       {controller.level !== "overview" && focusedSection && (
-        <RecommendationCardGrid section={focusedSection} wheelchairPreferred={accessibility.wheelchair} />
+        <RecommendationCardGrid
+          section={focusedSection}
+          wheelchairPreferred={accessibility.wheelchair}
+        />
       )}
     </div>
   );

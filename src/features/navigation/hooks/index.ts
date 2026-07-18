@@ -1,4 +1,8 @@
-export { useStadiumConfig, type UseStadiumConfigResult, type StadiumConfigStatus } from "./use-stadium-config";
+export {
+  useStadiumConfig,
+  type UseStadiumConfigResult,
+  type StadiumConfigStatus,
+} from "./use-stadium-config";
 export {
   useStadiumMapController,
   type UseStadiumMapControllerResult,

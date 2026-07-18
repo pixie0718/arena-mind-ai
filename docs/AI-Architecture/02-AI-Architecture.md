@@ -219,16 +219,16 @@ Memory expires when the session ends.
 
 The router maps user intent to the correct AI agent.
 
-| Intent | Agent |
-|----------|----------------|
-| Navigation | Navigation Agent |
-| Food | Food Agent |
-| Emergency | Emergency Agent |
-| Lost Item | Lost & Found Agent |
-| Translation | Translation Agent |
-| Match Info | Match Agent |
-| Venue | Venue Agent |
-| Transport | Transport Agent |
+| Intent        | Agent               |
+| ------------- | ------------------- |
+| Navigation    | Navigation Agent    |
+| Food          | Food Agent          |
+| Emergency     | Emergency Agent     |
+| Lost Item     | Lost & Found Agent  |
+| Translation   | Translation Agent   |
+| Match Info    | Match Agent         |
+| Venue         | Venue Agent         |
+| Transport     | Transport Agent     |
 | Accessibility | Accessibility Agent |
 
 Future versions may support multiple agents collaborating on one request.
@@ -453,7 +453,7 @@ built for this step explicitly instructs the model to:
 - Say so honestly if information is missing, instead of guessing.
 - Reply in the same language as the deterministic baseline answer (which is
   already localized — see `ai/reply-i18n.ts`).
-- Briefly explain *why* behind a recommendation, using only the reasoning
+- Briefly explain _why_ behind a recommendation, using only the reasoning
   already present in the facts (explainability).
 
 **Emergency is exempt** — its replies are safety-critical and remain 100%
@@ -461,7 +461,7 @@ template-driven, with no LLM call at all, per
 `ai/response-generator.ts::shouldGroundWithLLM`.
 
 **Unknown intent** (greetings, small talk, unclear messages — no agent runs)
-is *not* exempt: it gets its own grounded prompt, anchored to the app's
+is _not_ exempt: it gets its own grounded prompt, anchored to the app's
 fixed capability list instead of tool facts, so a plain "hey" gets a natural
 greeting instead of always replaying the same canned "I didn't understand"
 line, while genuinely unclear input still honestly says so rather than
@@ -568,13 +568,13 @@ The AI must never:
 
 # AI Performance Targets
 
-| Metric | Target |
-|---------|--------|
-| Intent Detection | >95% |
-| AI Response Time | <2 sec |
-| Context Retrieval | <500 ms |
-| Session Update | <100 ms |
-| Recommendation Generation | <1 sec |
+| Metric                    | Target  |
+| ------------------------- | ------- |
+| Intent Detection          | >95%    |
+| AI Response Time          | <2 sec  |
+| Context Retrieval         | <500 ms |
+| Session Update            | <100 ms |
+| Recommendation Generation | <1 sec  |
 
 ---
 

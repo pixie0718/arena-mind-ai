@@ -15,8 +15,12 @@ export function ProfileScreen() {
           <User className="size-5" aria-hidden="true" />
         </span>
         <div className="flex flex-col">
-          <h1 className="font-heading text-xl tracking-wide text-foreground uppercase">Profile &amp; Settings</h1>
-          <p className="text-sm font-medium text-muted-foreground">Preferences apply everywhere in the app immediately.</p>
+          <h1 className="font-heading text-xl tracking-wide text-foreground uppercase">
+            Profile &amp; Settings
+          </h1>
+          <p className="text-sm font-medium text-muted-foreground">
+            Preferences apply everywhere in the app immediately.
+          </p>
         </div>
       </header>
 

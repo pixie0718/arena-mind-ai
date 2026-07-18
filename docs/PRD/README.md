@@ -1,4 +1,5 @@
 # ArenaMind AI
+
 ### One AI. Infinite Stadium Experiences.
 
 > **Product Requirements Document (PRD)**
@@ -163,25 +164,31 @@ Every interaction begins with one conversation.
 Example:
 
 User:
+
 > I can't find my seat.
 
 ArenaMind AI:
+
 > You're currently near Gate 3. Your seat is Block B, Row 14, Seat 22. Follow this route. Estimated walking time: 3 minutes.
 
 ---
 
 User:
+
 > I'm hungry.
 
 ArenaMind AI:
+
 > The nearest food stall is 40 meters away. Today's shortest queue is Burger Station. Estimated waiting time is 4 minutes.
 
 ---
 
 User:
+
 > My father fainted.
 
 ArenaMind AI:
+
 > Emergency assistance has been requested.
 >
 > Location:
@@ -207,25 +214,25 @@ ArenaMind AI should feel less like an application and more like an intelligent s
 ArenaMind AI follows these principles throughout the product.
 
 1. AI First
-Every experience begins with conversation.
+   Every experience begins with conversation.
 
 2. Mobile First
-Designed primarily for smartphones.
+   Designed primarily for smartphones.
 
 3. Accessibility First
-Usable by everyone.
+   Usable by everyone.
 
 4. Context Aware
-AI always understands user context.
+   AI always understands user context.
 
 5. Fast Responses
-Minimal latency.
+   Minimal latency.
 
 6. Minimal User Effort
-Reduce taps and screens.
+   Reduce taps and screens.
 
 7. Privacy by Design
-User data remains protected.
+   User data remains protected.
 
 ---
 
@@ -265,24 +272,29 @@ These can be demonstrated using simulated data.
 # Technology Direction
 
 Frontend:
+
 - Next.js
 - TypeScript
 - TailwindCSS
 - shadcn/ui
 
 AI:
+
 - Gemini
 
 Maps:
+
 - OpenStreetMap
 - Leaflet
 
 Storage:
+
 - Cookies
 - Sessions
 - Local JSON Knowledge Base
 
 Deployment:
+
 - Vercel
 
 ---
@@ -311,9 +323,9 @@ Each chapter should be considered an extension of this document.
 
 # Revision History
 
-| Version | Date | Description |
-|----------|------|-------------|
-| 1.0 | Initial Draft | Initial Product Requirements Document |
+| Version | Date          | Description                           |
+| ------- | ------------- | ------------------------------------- |
+| 1.0     | Initial Draft | Initial Product Requirements Document |
 
 ---
 

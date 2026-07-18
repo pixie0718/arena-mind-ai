@@ -1,8 +1,15 @@
 # ArenaMind AI
 
+![Next.js](https://img.shields.io/badge/Next.js-15-black)
+![TypeScript](https://img.shields.io/badge/TypeScript-strict-3178c6)
+![Tests](https://img.shields.io/badge/tests-184%20passing-brightgreen)
+![Coverage](https://img.shields.io/badge/engine%20coverage-83%25-brightgreen)
+![CI](https://github.com/pixie0718/arena-mind-ai/actions/workflows/ci.yml/badge.svg)
+![License](https://img.shields.io/badge/license-MIT-blue)
+
 **A GenAI-powered stadium companion for the FIFA World Cup 2026 — Smart Stadiums & Tournament Operations Hackathon.**
 
-ArenaMind AI combines deterministic operational intelligence with grounded Large Language Model response generation. Every operational decision — which gate, which vendor, which exit, which medical team — is computed by plain, auditable logic against a structured knowledge base. A Large Language Model (Groq) is layered on top purely to improve conversational quality: turning an already-correct, already-verified answer into natural, context-aware, streamed language. The result is an assistant that *feels* genuinely conversational without ever being allowed to invent a stadium fact.
+ArenaMind AI combines deterministic operational intelligence with grounded Large Language Model response generation. Every operational decision — which gate, which vendor, which exit, which medical team — is computed by plain, auditable logic against a structured knowledge base. A Large Language Model (Groq) is layered on top purely to improve conversational quality: turning an already-correct, already-verified answer into natural, context-aware, streamed language. The result is an assistant that _feels_ genuinely conversational without ever being allowed to invent a stadium fact.
 
 ---
 
@@ -27,16 +34,16 @@ ArenaMind AI combines deterministic operational intelligence with grounded Large
 
 ## Challenge Coverage
 
-| Challenge Requirement | ArenaMind AI Implementation |
-|---|---|
-| Navigation | ✅ Conversational seat, gate, exit, and restroom guidance, backed by an interactive stadium map |
-| Crowd Management | ✅ Crowd-aware facility and vendor recommendations, ranked by live-style crowd-level data (demonstration data, clearly labeled in-reply) |
-| Accessibility | ✅ Wheelchair-aware routing, keyboard-only operation, ARIA-correct interactive elements, `prefers-reduced-motion` support |
-| Transportation | ✅ Parking, metro, bus, taxi, and rideshare recommendations ranked by ETA |
-| Sustainability | ✅ Lower-emissions transport options surfaced and explained alongside faster ones (demonstration classification, not a certified emissions model) |
-| Multilingual Assistance | ✅ LLM-powered translation of arbitrary phrases, and assistant replies generated in the visitor's preferred language |
-| Operational Intelligence | ✅ Central orchestrator that classifies intent, resolves context, and routes to the correct domain agent every turn |
-| Real-Time Decision Support | ✅ Recommendations personalized to the visitor's linked seat, stadium, accessibility needs, and recent conversation |
+| Challenge Requirement      | ArenaMind AI Implementation                                                                                                                       |
+| -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Navigation                 | ✅ Conversational seat, gate, exit, and restroom guidance, backed by an interactive stadium map                                                   |
+| Crowd Management           | ✅ Crowd-aware facility and vendor recommendations, ranked by live-style crowd-level data (demonstration data, clearly labeled in-reply)          |
+| Accessibility              | ✅ Wheelchair-aware routing, keyboard-only operation, ARIA-correct interactive elements, `prefers-reduced-motion` support                         |
+| Transportation             | ✅ Parking, metro, bus, taxi, and rideshare recommendations ranked by ETA                                                                         |
+| Sustainability             | ✅ Lower-emissions transport options surfaced and explained alongside faster ones (demonstration classification, not a certified emissions model) |
+| Multilingual Assistance    | ✅ LLM-powered translation of arbitrary phrases, and assistant replies generated in the visitor's preferred language                              |
+| Operational Intelligence   | ✅ Central orchestrator that classifies intent, resolves context, and routes to the correct domain agent every turn                               |
+| Real-Time Decision Support | ✅ Recommendations personalized to the visitor's linked seat, stadium, accessibility needs, and recent conversation                               |
 
 Every row above maps to code that exists in this repository today — see [Architecture](#architecture) for where.
 
@@ -81,7 +88,7 @@ Large Language Model       (Groq — rephrases only, streamed)
 Grounded Natural Language Response
 ```
 
-**Why this minimizes hallucination:** the model is invoked *after* every business decision has already been made, and it is given that decision as input rather than being asked to produce it. There is no point in the pipeline where the model is the origin of a fact — it can only reshape facts it was handed. This is the same reason a calculator's display can be trusted even though the person reading it isn't a mathematician: the computation happened somewhere verifiable, and the display is just presentation.
+**Why this minimizes hallucination:** the model is invoked _after_ every business decision has already been made, and it is given that decision as input rather than being asked to produce it. There is no point in the pipeline where the model is the origin of a fact — it can only reshape facts it was handed. This is the same reason a calculator's display can be trusted even though the person reading it isn't a mathematician: the computation happened somewhere verifiable, and the display is just presentation.
 
 ### Example Conversation
 
@@ -105,14 +112,14 @@ Bot:  Medical help is being notified. You're at Section 102 —
 
 ## Hallucination Prevention
 
-| Mechanism | What it does |
-|---|---|
-| **Tool-first, deterministic routing** | Every agent decision (gate, vendor, exit, medical team) is plain application logic reading the knowledge base — never a model call. |
-| **Grounded generation prompts** | The LLM is given the verified answer and raw supporting data for the turn, and is instructed to never add, remove, or change a fact, number, or name. |
-| **Emergency stays fully template-driven** | Safety-critical replies (nearest medical team, exit, ETA, instructions) never pass through a model call at all. |
-| **Deterministic fallback on any model failure** | A timeout, error, missing API key, or exhausted quota falls back to streaming the deterministic template reply verbatim — the assistant is never silent because a model call failed. |
-| **Refusal safety net** | A response is checked against the deterministic baseline before being trusted; if the model claims to lack information the agent actually has, the deterministic answer is used instead. |
-| **Status-word and fact locking** | Specific values (order status, gate numbers, ETAs) are explicitly forbidden from being paraphrased into a different-sounding synonym that could imply a different real state. |
+| Mechanism                                       | What it does                                                                                                                                                                             |
+| ----------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Tool-first, deterministic routing**           | Every agent decision (gate, vendor, exit, medical team) is plain application logic reading the knowledge base — never a model call.                                                      |
+| **Grounded generation prompts**                 | The LLM is given the verified answer and raw supporting data for the turn, and is instructed to never add, remove, or change a fact, number, or name.                                    |
+| **Emergency stays fully template-driven**       | Safety-critical replies (nearest medical team, exit, ETA, instructions) never pass through a model call at all.                                                                          |
+| **Deterministic fallback on any model failure** | A timeout, error, missing API key, or exhausted quota falls back to streaming the deterministic template reply verbatim — the assistant is never silent because a model call failed.     |
+| **Refusal safety net**                          | A response is checked against the deterministic baseline before being trusted; if the model claims to lack information the agent actually has, the deterministic answer is used instead. |
+| **Status-word and fact locking**                | Specific values (order status, gate numbers, ETAs) are explicitly forbidden from being paraphrased into a different-sounding synonym that could imply a different real state.            |
 
 ## Why This Design?
 
@@ -133,40 +140,42 @@ Bot:  Medical help is being notified. You're at Section 102 —
 
 ### Domain Agents
 
-| Agent | Responsibility |
-|---|---|
-| Navigation | Seat, section, and gate lookup; nearest-restroom and fastest-exit guidance; drives the interactive stadium map |
-| Food | Vendor discovery ranked by queue length and crowd level, menu browsing, simulated ordering |
-| Emergency | Category-aware response (medical, fire, security, lost child, crowd, injury, and more) with nearest medical team, exit, and dispatch instructions — highest priority, fully deterministic |
-| Translation | Real-time translation of arbitrary phrases via the LLM, with an offline phrasebook fallback |
-| Venue | Locates non-food facilities — restrooms, medical centers, prayer rooms, charging stations, merchandise |
-| Transport | Parking, metro, bus, taxi, and rideshare options ranked by ETA, with sustainability notes |
-| Match | Kickoff time, teams, and competition info for the active stadium |
-| Lost & Found | Files and tracks lost-item reports for the active session |
+| Agent        | Responsibility                                                                                                                                                                            |
+| ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Navigation   | Seat, section, and gate lookup; nearest-restroom and fastest-exit guidance; drives the interactive stadium map                                                                            |
+| Food         | Vendor discovery ranked by queue length and crowd level, menu browsing, simulated ordering                                                                                                |
+| Emergency    | Category-aware response (medical, fire, security, lost child, crowd, injury, and more) with nearest medical team, exit, and dispatch instructions — highest priority, fully deterministic |
+| Translation  | Real-time translation of arbitrary phrases via the LLM, with an offline phrasebook fallback                                                                                               |
+| Venue        | Locates non-food facilities — restrooms, medical centers, prayer rooms, charging stations, merchandise                                                                                    |
+| Transport    | Parking, metro, bus, taxi, and rideshare options ranked by ETA, with sustainability notes                                                                                                 |
+| Match        | Kickoff time, teams, and competition info for the active stadium                                                                                                                          |
+| Lost & Found | Files and tracks lost-item reports for the active session                                                                                                                                 |
 
 ### Knowledge Base
 
-| Category | Contents |
-|---|---|
-| Stadiums | MetLife Stadium, Hard Rock Stadium, Estadio Azteca — venue metadata and section layout |
-| Facilities | Restrooms, medical centers, prayer rooms, charging stations, merchandise (MetLife) |
-| Vendors | Food/drink vendors with menus, pricing, and queue/crowd data (MetLife) |
-| Routes | Section-to-gate and exit routing data (MetLife) |
-| Transport | Parking, metro, bus, taxi, and rideshare options (MetLife) |
-| Accessibility | Accessible-route and facility metadata (MetLife) |
-| Matches | Demo match schedule across all three stadiums |
-| FAQ | General visitor questions |
+| Category      | Contents                                                                               |
+| ------------- | -------------------------------------------------------------------------------------- |
+| Stadiums      | MetLife Stadium, Hard Rock Stadium, Estadio Azteca — venue metadata and section layout |
+| Facilities    | Restrooms, medical centers, prayer rooms, charging stations, merchandise (MetLife)     |
+| Vendors       | Food/drink vendors with menus, pricing, and queue/crowd data (MetLife)                 |
+| Routes        | Section-to-gate and exit routing data (MetLife)                                        |
+| Transport     | Parking, metro, bus, taxi, and rideshare options (MetLife)                             |
+| Accessibility | Accessible-route and facility metadata (MetLife)                                       |
+| Matches       | Demo match schedule across all three stadiums                                          |
+| FAQ           | General visitor questions                                                              |
 
 ## Tech Stack
 
-| Layer | Technology |
-|---|---|
-| Framework | Next.js 15 (App Router), React 19, TypeScript |
-| AI | Groq (`openai/gpt-oss-120b`) via the Vercel AI SDK (`ai`, `@ai-sdk/groq`) |
-| Styling | Tailwind CSS 4, shadcn-style UI primitives |
-| State | Jotai |
-| Animation | Framer Motion, Three.js / React Three Fiber |
-| Validation | Zod |
+| Layer      | Technology                                                                |
+| ---------- | ------------------------------------------------------------------------- |
+| Framework  | Next.js 15 (App Router), React 19, TypeScript (strict)                    |
+| AI         | Groq (`openai/gpt-oss-120b`) via the Vercel AI SDK (`ai`, `@ai-sdk/groq`) |
+| Styling    | Tailwind CSS 4, shadcn-style UI primitives                                |
+| State      | Jotai                                                                     |
+| Animation  | Framer Motion, Three.js / React Three Fiber                               |
+| Validation | Zod                                                                       |
+| Testing    | Vitest, Testing Library, jsdom, `@vitest/coverage-v8`                     |
+| Tooling    | ESLint, Prettier, GitHub Actions CI                                       |
 
 ## Getting Started
 
@@ -205,13 +214,16 @@ See [`docs/AI-Architecture/02-AI-Architecture.md`](docs/AI-Architecture/02-AI-Ar
 
 ## Testing & Quality Assurance
 
-Verification combines an automated unit test suite (via Node's built-in test runner — `npm test`, no extra dependency) with manual/live-request testing — actually running the application, not just inspecting code and assuming behavior.
+Verification combines an automated test suite with manual/live-request testing — actually running the application, not just inspecting code and assuming behavior.
 
-- **Automated unit tests** (`npm test`, also run in CI on every push — see `.github/workflows/ci.yml`): 56 tests across intent classification, seat/gate/row parsing, response validation, the hallucination-prevention refusal detector, i18n helpers, and streaming text chunking. Several are direct regression tests for real bugs caught during live QA (e.g. the seat-parser stopword bug that swallowed "Gate A", and the false-refusal safety net's curly-apostrophe matching bug — both reproduced as failing tests first, then fixed).
-- **Static checks:** `tsc --noEmit`, ESLint, and a production `next build` all run clean, in CI and locally.
+- **Automated tests** (`npm test`, run in CI on every push — see `.github/workflows/ci.yml`): **184 tests across 33 files**, using [Vitest](https://vitest.dev) + [Testing Library](https://testing-library.com). `npm run test:coverage` reports **~84% statement coverage on the decision-making engine** (`src/ai/**` + `src/tools/**` — every agent, every tool, the orchestrator, intent classification, and the grounding/hallucination-prevention layer). Coverage is deliberately scoped to that engine rather than the whole repo: UI components are verified live (screenshots, real browser interaction — see the QA reports below) rather than snapshot-tested, since what matters for them (does it render correctly, is it accessible, does it look right in both themes) isn't something a DOM diff catches.
+  - **Unit tests** for every tool (real reads against the actual knowledge-base JSON, not mocks), every agent's deterministic branching, the orchestrator's routing and memory persistence, intent classification, i18n, and the false-refusal safety net.
+  - **Component tests** (Testing Library + jsdom) for interactive chat UI pieces.
+  - Several tests are direct regressions for real bugs caught during live QA: the seat-parser stopword bug that silently swallowed "Gate A", the false-refusal detector's curly-apostrophe matching bug, and the missing `transport` keyword that misrouted "Nearest transport" — each was reproduced as a failing test first, then fixed.
+- **Static checks:** `tsc --noEmit`, ESLint, Prettier (`format:check`), `npm audit` (zero known vulnerabilities — a transitive `postcss` advisory pulled in via Next.js is closed via a `package.json` `overrides` pin), and a production `next build` all run clean, in CI and locally.
 - **Accessibility:** keyboard-only navigation and send flow, ARIA structure on interactive elements (including the stadium map), touch-target sizing, and `prefers-reduced-motion` behavior verified.
 - **Responsive layout:** verified across mobile, tablet, and desktop breakpoints with zero horizontal overflow.
-- **Manual and regression QA:** every agent domain (navigation, food, emergency, translation, venue, transport, match, lost & found) exercised end-to-end, including multi-turn memory recall.
+- **Manual and regression QA:** every agent domain (navigation, food, emergency, translation, venue, transport, match, lost & found) exercised end-to-end live, including multi-turn memory recall, in both light and dark themes.
 - **Edge-case and malformed-input testing:** malformed/invalid request bodies, missing fields, wrong types, and non-standard HTTP methods all verified to fail safely with no crash.
 - **Prompt injection testing:** attempts to exfiltrate the system prompt or API key, or override the assistant's persona, verified to be refused with no leak.
 - **Hallucination testing:** deliberately ambiguous and out-of-scope questions (topics with no data in the knowledge base) verified to produce honest "I don't have that" responses rather than fabricated answers.
@@ -224,7 +236,7 @@ Full findings, including two rounds of adversarial QA, are documented in [`RC1-R
 - Vendor queues, crowd levels, and walking times are demonstration data, not a live IoT/POS feed — the assistant labels this honestly rather than implying real-time sensors.
 - One active stadium at a time, selected from three configured venues (MetLife Stadium, Hard Rock Stadium, Estadio Azteca). MetLife Stadium has full data coverage (facilities, vendors, routes, transport); Hard Rock Stadium and Estadio Azteca currently have stadium and match data only.
 - Conversation memory is scoped to the active server-process session — there is no login, database, or cross-device sync in this build.
-- The intent classifier reads English input; assistant *output* is generated in the visitor's preferred language.
+- The intent classifier reads English input; assistant _output_ is generated in the visitor's preferred language.
 - Food ordering and lost-item reporting are simulated flows, clearly framed as such in the assistant's replies.
 - A shared Groq API key has a daily token quota that can be exhausted under heavy use.
 
@@ -232,7 +244,8 @@ Full findings, including two rounds of adversarial QA, are documented in [`RC1-R
 
 - Groq's daily token quota is shared and finite; when exhausted, the assistant automatically falls back to deterministic template replies rather than erroring, but loses varied natural phrasing until quota recovers.
 - LLM-based intent classification can occasionally return a different result for an identical repeated message; every path it can land on has been verified to degrade safely rather than hallucinate.
-- Automated tests cover pure, deterministic logic (parsing, validation, classification, hallucination-guard regexes); the LLM-dependent grounded-generation path itself is verified live/manually rather than with a mocked-model automated test, since the behavior that matters most there (does it actually stay grounded against a real model's output) is exactly what a mock can't exercise honestly.
+- Automated tests cover every deterministic decision path (agents, tools, orchestrator, classification, hallucination-guard regexes) and interactive UI components; the LLM-dependent grounded-generation path itself is verified live/manually rather than with a mocked-model automated test, since the behavior that matters most there (does it actually stay grounded against a real model's output) is exactly what a mock can't exercise honestly.
+- UI components beyond the tested chat pieces (the stadium map, 3D layer, profile forms) are verified through live/manual QA rather than component tests — see the QA reports for what was actually exercised.
 
 ## Screenshots
 
@@ -243,4 +256,7 @@ _Screenshots have not yet been captured for this submission. This section is lef
 - `npm run dev` — start the dev server
 - `npm run build` — production build
 - `npm run lint` — ESLint
-- `npm test` — automated unit test suite (Node's built-in test runner, with coverage)
+- `npm run typecheck` — TypeScript, no emit
+- `npm run format` / `format:check` — Prettier
+- `npm test` — automated test suite (Vitest)
+- `npm run test:coverage` — test suite with a coverage report

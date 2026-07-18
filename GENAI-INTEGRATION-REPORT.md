@@ -4,7 +4,7 @@ This pass converts ArenaMind AI from a templated, rule-based assistant into
 a genuinely GenAI-powered one, without changing the documented architecture
 (User → Intent Engine → Orchestrator → Agent → Tool → Knowledge Base →
 Structured Verified Facts → Response), the UI, or any business logic that
-decides *which* gate, vendor, exit, or medical team to recommend. All
+decides _which_ gate, vendor, exit, or medical team to recommend. All
 findings below were verified by actually running the app (`next dev`) and
 hitting the real `/api/chat` streaming endpoint with live requests — not by
 reading code and assuming behavior.
@@ -126,7 +126,7 @@ exit, ETA, instructions) is guaranteed to reach the visitor exactly as
 computed, with zero model exposure.
 
 "Unknown" intent (greetings, small talk, unclear messages — no agent runs)
-*is* grounded, but against a different, narrower fact: a fixed list of the
+_is_ grounded, but against a different, narrower fact: a fixed list of the
 app's real capabilities (`CAPABILITIES_FACT` in `response-generator.ts`),
 never the tool-call facts used elsewhere. This was added after live testing
 surfaced a real UX bug (§7.3): a plain "hy"/"hello" always produced the
@@ -156,7 +156,7 @@ NDJSON stream:
   and explained naturally; menu items from the tool surfaced correctly.
 - **Emergency** — confirmed byte-for-byte template output, confirmed via
   server logs that no model call is made for this intent.
-- **Translation** — a phrase *not* in the offline phrasebook ("Can you
+- **Translation** — a phrase _not_ in the offline phrasebook ("Can you
   show me the shortest way to the merchandise store" → Spanish) translated
   correctly via the live model call, proving arbitrary-phrase support
   actually works, not just the 4 hardcoded entries.
@@ -240,11 +240,11 @@ NDJSON stream:
      ANSWER, and to lock status words (e.g. "reported") from being
      swapped for a different-sounding synonym ("searching") that implies
      a different real state.
-   Retested live, multiple runs: status word now reproduces exactly
-   ("...is currently reported"); even on a run where the classifier still
-   returned "unknown" (inherent LLM non-determinism — not fully
-   eliminated), the fallback path correctly gave an honest "no live status
-   check" answer instead of fabricating one — defense in depth held.
+     Retested live, multiple runs: status word now reproduces exactly
+     ("...is currently reported"); even on a run where the classifier still
+     returned "unknown" (inherent LLM non-determinism — not fully
+     eliminated), the fallback path correctly gave an honest "no live status
+     check" answer instead of fabricating one — defense in depth held.
 6. **Model denied having information it actually had — the most severe
    finding.** Live test, Conversation 5: "Fastest exit afterwards" after
    asking about the match. The deterministic agent had a real, correct
@@ -263,7 +263,7 @@ NDJSON stream:
    (`REFUSAL_PATTERN`/`isFalseRefusal`), and — only when the deterministic
    baseline was NOT itself a refusal — discards the buffered text and
    falls back to streaming the real template answer instead. A real bug
-   was found and fixed *while building this check*: the regex was written
+   was found and fixed _while building this check_: the regex was written
    with ASCII apostrophes, but the model's streamed text uses typographic
    apostrophes ("don't" → "don't" as U+2019), so the very first version of
    the check silently matched nothing (verified: 4 of 5 refusals slipped
@@ -313,7 +313,7 @@ dynamic route; no new client bundle weight since no UI code changed).
   non-deterministic between identical repeated messages (observed live:
   the same follow-up classified as `lost_found` on some runs and `unknown`
   on others). This is inherent to LLM-based classification, not fixed by
-  this pass — what changed is that *every* path it can land on now
+  this pass — what changed is that _every_ path it can land on now
   degrades safely instead of hallucinating, verified specifically for the
   cases found in bugs #5–#7 above. A full audit of `INTENT_KEYWORDS` for
   other missing literal keywords (the "transport" gap in bug #7 was found
@@ -338,8 +338,8 @@ dynamic route; no new client bundle weight since no UI code changed).
   This is the expected cost of genuine generation and was an explicit goal
   of this pass, not an oversight.
 - Intent-input comprehension is still English-only (unchanged from before
-  this pass — only *output* language changed, and only in *how* it's
-  phrased, not *what* language: the deterministic template was already
+  this pass — only _output_ language changed, and only in _how_ it's
+  phrased, not _what_ language: the deterministic template was already
   localized).
 - No automated test suite exists for the new grounding layer — verification
   here was manual, live-request testing only, consistent with how the rest
@@ -362,7 +362,7 @@ plus Playwright for browser-level checks); nothing assumed from reading code.
    "Medical Center North is at Block A, Level 1" — completely unrelated.
    Root cause: `venue.agent.ts` called the facility tool even when no
    facility type was detected from the message; `facility.tool.ts` returns
-   *every* facility (its documented "browse all" behavior) when no type is
+   _every_ facility (its documented "browse all" behavior) when no type is
    given, so `facilities[0]` got presented as if it were the answer. Fixed
    by only calling the tool (and asserting a specific facility) once a type
    was actually identified — `src/ai/agents/venue.agent.ts`.
@@ -453,7 +453,7 @@ plus Playwright for browser-level checks); nothing assumed from reading code.
   works correctly.
 - **Dark mode** — renders with zero console/page errors.
 - **Emergency card and suggested-action chip rendering** — both initially
-  *looked* broken in fast automated checks, but were conclusively false
+  _looked_ broken in fast automated checks, but were conclusively false
   positives from insufficient wait time in the test itself, not the
   product: once given enough time for the (currently rate-limit-elongated)
   response to actually finish streaming, both the emergency card and the

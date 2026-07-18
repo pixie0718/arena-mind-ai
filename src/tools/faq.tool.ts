@@ -9,10 +9,7 @@ const inputSchema = z.object({
 
 export type FaqSearchInput = z.infer<typeof inputSchema>;
 
-async function execute(
-  rawInput: unknown,
-  _context: ToolContext,
-): Promise<ToolResult<FaqItem[]>> {
+async function execute(rawInput: unknown, _context: ToolContext): Promise<ToolResult<FaqItem[]>> {
   const input = inputSchema.parse(rawInput);
   const query = input.query.toLowerCase();
 

@@ -2,13 +2,7 @@ import { CalendarClock, MapPin, Trophy, DoorOpen, LayoutGrid } from "lucide-reac
 import { Card } from "@/components/ui/card";
 import type { Match, Stadium } from "@/types/knowledge";
 
-export function UpcomingMatchCard({
-  match,
-  stadium,
-}: {
-  match: Match;
-  stadium: Stadium;
-}) {
+export function UpcomingMatchCard({ match, stadium }: { match: Match; stadium: Stadium }) {
   return (
     <Card className="relative gap-3 overflow-hidden rounded-2xl border-white/10 bg-gradient-to-br from-card via-card to-primary/10 p-5 text-card-foreground shadow-sm">
       <div

@@ -63,7 +63,11 @@ export function ThemeSettings() {
             onClick={() => setTheme(isDark ? "light" : "dark")}
             className="glow-secondary flex size-12 shrink-0 items-center justify-center rounded-full border border-border bg-muted text-foreground transition-colors hover:bg-muted/70 active:scale-95 disabled:pointer-events-none disabled:opacity-50"
           >
-            {isDark ? <Moon className="size-5" aria-hidden="true" /> : <Sun className="size-5" aria-hidden="true" />}
+            {isDark ? (
+              <Moon className="size-5" aria-hidden="true" />
+            ) : (
+              <Sun className="size-5" aria-hidden="true" />
+            )}
           </button>
         </div>
       </CardContent>

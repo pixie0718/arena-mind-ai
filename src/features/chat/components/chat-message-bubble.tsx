@@ -72,15 +72,15 @@ export function ChatMessageBubble({
         </div>
       </div>
 
-      {!isUser && !message.isStreaming && (
-        isEmergencyMetadata(message.metadata) ? (
+      {!isUser &&
+        !message.isStreaming &&
+        (isEmergencyMetadata(message.metadata) ? (
           <EmergencyCard metadata={message.metadata} onSuggestedAction={onSuggestedAction} />
         ) : isNavigationMetadata(message.metadata) ? (
           <NavigationMapCard metadata={message.metadata} onSuggestedAction={onSuggestedAction} />
         ) : (
           <ToolResultCard toolCalls={message.toolCalls} />
-        )
-      )}
+        ))}
 
       {!isUser && isLatest && !message.isStreaming && (
         <SuggestedActionChips

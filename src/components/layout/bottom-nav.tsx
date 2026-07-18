@@ -15,10 +15,7 @@ export function BottomNav() {
     >
       <ul className="mx-auto flex max-w-2xl items-stretch justify-between px-2 pb-[env(safe-area-inset-bottom)]">
         {BOTTOM_NAV_ITEMS.map((item) => {
-          const isActive =
-            item.href === "/"
-              ? pathname === "/"
-              : pathname.startsWith(item.href);
+          const isActive = item.href === "/" ? pathname === "/" : pathname.startsWith(item.href);
           const Icon = item.icon;
 
           return (
@@ -28,17 +25,11 @@ export function BottomNav() {
                 aria-current={isActive ? "page" : undefined}
                 className={cn(
                   "flex flex-col items-center gap-1 py-2.5 text-[11px] font-medium transition-colors",
-                  isActive
-                    ? "text-primary"
-                    : "text-muted-foreground hover:text-foreground",
+                  isActive ? "text-primary" : "text-muted-foreground hover:text-foreground",
                 )}
               >
                 <span className="relative flex items-center justify-center">
-                  <Icon
-                    className="size-5"
-                    strokeWidth={isActive ? 2.5 : 2}
-                    aria-hidden="true"
-                  />
+                  <Icon className="size-5" strokeWidth={isActive ? 2.5 : 2} aria-hidden="true" />
                   {isActive && (
                     <span
                       className="glow-primary absolute -bottom-1.5 size-1 rounded-full bg-primary"

@@ -7,8 +7,8 @@ on:
     branches: [main]
 
 jobs:
-  test:
-    name: Typecheck, lint, test, build
+  verify:
+    name: Typecheck, lint, format, test, build
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -17,20 +17,23 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 24
+          node-version: 20
           cache: npm
 
       - name: Install dependencies
-        run: npm ci
+        run: npm ci --legacy-peer-deps
 
       - name: Type check
-        run: npx tsc --noEmit
+        run: npm run typecheck
 
       - name: Lint
         run: npm run lint
 
+      - name: Format check
+        run: npm run format:check
+
       - name: Unit tests
-        run: npm test
+        run: npm run test:coverage
 
       - name: Production build
         run: npm run build
@@ -39,3 +42,12 @@ jobs:
           # route calls Groq at build time (only at request time), and
           # every LLM call already degrades gracefully without one.
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY || 'ci-placeholder-key' }}
+
+      # Keeps the dependency tree at zero known vulnerabilities. `npm audit`
+      # exits non-zero on any finding, so a new advisory fails CI rather than
+      # sitting unnoticed in a submission. `postcss` is pinned via
+      # package.json's `overrides` to close the one transitive advisory
+      # found during development (GHSA-qx2v-qp2m-jg93, via Next.js's own
+      # bundled postcss) — this step is what would catch the next one.
+      - name: Audit dependencies
+        run: npm audit --audit-level=low

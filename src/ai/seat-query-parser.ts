@@ -62,7 +62,10 @@ export function parseSeatQuery(text: string): SeatQuery {
   return {
     sectionId: extractField(text, /\b(?:section|sec\.?|block)(?![a-z])\s*[:#]?\s*([a-z0-9]+)\b/gi),
     row: extractField(text, /\brow(?![a-z])\s*[:#]?\s*([a-z0-9]+)\b/gi),
-    seatNumber: extractField(text, /\bseat(?![a-z])\s*(?:number|no\.?|#)?\s*[:#]?\s*([a-z0-9]+)\b/gi),
+    seatNumber: extractField(
+      text,
+      /\bseat(?![a-z])\s*(?:number|no\.?|#)?\s*[:#]?\s*([a-z0-9]+)\b/gi,
+    ),
     gate: extractField(text, /\bgate(?![a-z])\s*[:#]?\s*([a-z0-9]+)\b/gi)?.toUpperCase(),
   };
 }

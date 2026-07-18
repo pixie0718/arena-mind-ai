@@ -29,13 +29,13 @@ If they can describe what they need, the AI should guide them.
 
 ArenaMind AI currently supports the following roles.
 
-| Role | Description |
-|------|-------------|
-| Visitor | Primary stadium visitor |
-| Volunteer | Assists visitors |
-| Medical Staff | Handles emergency requests |
-| Security Staff | Responds to incidents |
-| Vendor | Handles food orders |
+| Role           | Description                |
+| -------------- | -------------------------- |
+| Visitor        | Primary stadium visitor    |
+| Volunteer      | Assists visitors           |
+| Medical Staff  | Handles emergency requests |
+| Security Staff | Responds to incidents      |
+| Vendor         | Handles food orders        |
 
 Future versions may introduce:
 

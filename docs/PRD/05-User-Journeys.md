@@ -418,20 +418,20 @@ Even during emergencies the assistant should remain calm, clear, and reassuring.
 
 # End-to-End Journey Summary
 
-| Stage | User Goal | AI Responsibility |
-|---------|-----------|------------------|
-| Before Leaving | Prepare | Planning & Guidance |
-| Travel | Reach Stadium | Navigation |
-| Arrival | Enter Venue | Gate Assistance |
-| Entry | Find Seat | Indoor Navigation |
-| Match | Enjoy Event | Live Information |
-| Food | Order Quickly | Smart Ordering |
-| Merchandise | Shopping | Recommendations |
-| Accessibility | Inclusive Experience | Personalized Routing |
-| Lost & Found | Recover Item | Digital Reporting |
-| Emergency | Immediate Help | AI Incident Assistant |
-| Match Ends | Exit Safely | Crowd Guidance |
-| Transport | Return Home | Travel Planning |
+| Stage          | User Goal            | AI Responsibility     |
+| -------------- | -------------------- | --------------------- |
+| Before Leaving | Prepare              | Planning & Guidance   |
+| Travel         | Reach Stadium        | Navigation            |
+| Arrival        | Enter Venue          | Gate Assistance       |
+| Entry          | Find Seat            | Indoor Navigation     |
+| Match          | Enjoy Event          | Live Information      |
+| Food           | Order Quickly        | Smart Ordering        |
+| Merchandise    | Shopping             | Recommendations       |
+| Accessibility  | Inclusive Experience | Personalized Routing  |
+| Lost & Found   | Recover Item         | Digital Reporting     |
+| Emergency      | Immediate Help       | AI Incident Assistant |
+| Match Ends     | Exit Safely          | Crowd Guidance        |
+| Transport      | Return Home          | Travel Planning       |
 
 ---
 

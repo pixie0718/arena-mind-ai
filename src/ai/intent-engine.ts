@@ -1,12 +1,8 @@
 import { groq } from "@ai-sdk/groq";
 import { generateObject, NoObjectGeneratedError } from "ai";
 import { z } from "zod";
-import type {
-  DetectedIntent,
-  EmergencyCategory,
-  IntentEngine,
-  IntentType,
-} from "@/types/intent";
+import { createAbortTimeout } from "@/ai/abort-timeout";
+import type { DetectedIntent, EmergencyCategory, IntentEngine, IntentType } from "@/types/intent";
 
 const INTENT_TYPES = [
   "navigation",
@@ -78,15 +74,58 @@ Return primary (best single intent), secondary (other plausible intents ranked b
  * navigation, not emergency).
  */
 const EMERGENCY_KEYWORDS: Record<EmergencyCategory, string[]> = {
-  medical: ["collapsed", "fainted", "unconscious", "medical", "sick", "heart attack", "seizure", "can't breathe", "chest pain"],
-  injury: ["injured", "injury", "hurt", "bleeding", "broken bone", "sprained", "twisted ankle", "fell down"],
+  medical: [
+    "collapsed",
+    "fainted",
+    "unconscious",
+    "medical",
+    "sick",
+    "heart attack",
+    "seizure",
+    "can't breathe",
+    "chest pain",
+  ],
+  injury: [
+    "injured",
+    "injury",
+    "hurt",
+    "bleeding",
+    "broken bone",
+    "sprained",
+    "twisted ankle",
+    "fell down",
+  ],
   fire: ["fire", "smoke", "burning", "flames"],
   security: ["fight", "threat", "weapon", "gun", "knife", "attacked", "security"],
-  suspicious_activity: ["suspicious", "suspicious package", "suspicious bag", "unattended bag", "strange behavior"],
-  lost_child: ["lost child", "missing child", "my kid is missing", "can't find my son", "can't find my daughter"],
+  suspicious_activity: [
+    "suspicious",
+    "suspicious package",
+    "suspicious bag",
+    "unattended bag",
+    "strange behavior",
+  ],
+  lost_child: [
+    "lost child",
+    "missing child",
+    "my kid is missing",
+    "can't find my son",
+    "can't find my daughter",
+  ],
   crowd: ["stampede", "crowd crush", "overcrowded", "trampled", "crushed", "too crowded"],
-  volunteer_request: ["need a volunteer", "volunteer", "need staff", "staff help", "need assistance"],
-  wheelchair_assistance: ["wheelchair", "mobility assistance", "need a wheelchair", "can't walk", "mobility scooter"],
+  volunteer_request: [
+    "need a volunteer",
+    "volunteer",
+    "need staff",
+    "staff help",
+    "need assistance",
+  ],
+  wheelchair_assistance: [
+    "wheelchair",
+    "mobility assistance",
+    "need a wheelchair",
+    "can't walk",
+    "mobility scooter",
+  ],
 };
 
 const GENERIC_EMERGENCY_KEYWORDS = ["emergency", "help", "urgent", "sos", "911"];
@@ -114,13 +153,7 @@ const INTENT_KEYWORDS: Record<Exclude<IntentType, "unknown">, string[]> = {
   food: ["hungry", "food", "eat", "order", "burger", "pizza", "drink", "snack"],
   emergency: [...GENERIC_EMERGENCY_KEYWORDS, ...Object.values(EMERGENCY_KEYWORDS).flat()],
   translation: ["translate", "language", "speak", "say this in"],
-  venue: [
-    "prayer room",
-    "charging",
-    "water station",
-    "merchandise",
-    "facility",
-  ],
+  venue: ["prayer room", "charging", "water station", "merchandise", "facility"],
   transport: [
     "transport",
     "transportation",
@@ -164,10 +197,7 @@ const INTENT_KEYWORDS: Record<Exclude<IntentType, "unknown">, string[]> = {
 function scoreIntents(normalized: string): Partial<Record<IntentType, number>> {
   const scores: Partial<Record<IntentType, number>> = {};
 
-  for (const [intent, keywords] of Object.entries(INTENT_KEYWORDS) as [
-    IntentType,
-    string[],
-  ][]) {
+  for (const [intent, keywords] of Object.entries(INTENT_KEYWORDS) as [IntentType, string[]][]) {
     const matched = keywords.filter((keyword) => normalized.includes(keyword));
     const weight = matched.reduce((sum, keyword) => sum + keyword.length, 0);
     if (weight > 0) scores[intent] = weight;
@@ -227,9 +257,7 @@ function detectByKeywords(input: string): DetectedIntent {
   const normalized = input.toLowerCase();
   const scores = scoreIntents(normalized);
 
-  const ranked = (Object.entries(scores) as [IntentType, number][]).sort(
-    (a, b) => b[1] - a[1],
-  );
+  const ranked = (Object.entries(scores) as [IntentType, number][]).sort((a, b) => b[1] - a[1]);
 
   const primary = ranked[0]?.[0] ?? "unknown";
   const secondary = ranked.slice(1).map(([intent]) => intent);
@@ -288,8 +316,7 @@ async function classifyWithGroq(
   input: string,
   recentContext?: string,
 ): Promise<DetectedIntent | null> {
-  const timeoutController = new AbortController();
-  const timeout = setTimeout(() => timeoutController.abort(), LLM_TIMEOUT_MS);
+  const timeout = createAbortTimeout(LLM_TIMEOUT_MS);
   const prompt = recentContext
     ? `RECENT CONVERSATION (context only — see system prompt for how to use this):\n${recentContext}\n\nCurrent message: ${input}`
     : input;
@@ -300,7 +327,7 @@ async function classifyWithGroq(
       schema: classificationSchema,
       system: CLASSIFIER_SYSTEM_PROMPT,
       prompt,
-      abortSignal: timeoutController.signal,
+      abortSignal: timeout.signal,
       // See the matching comment in ai/response-generator.ts — the SDK's
       // default (2 retries / 3 attempts with backoff) can run past our own
       // timeout under sustained rate-limiting, delaying the keyword-based
@@ -324,7 +351,7 @@ async function classifyWithGroq(
     console.warn("[intent-engine] Groq classification failed, falling back to keywords:", reason);
     return null;
   } finally {
-    clearTimeout(timeout);
+    timeout.clear();
   }
 }
 

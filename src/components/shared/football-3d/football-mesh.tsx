@@ -66,7 +66,13 @@ export function FootballMesh({
   return (
     <mesh ref={meshRef} position={position} scale={scale}>
       <sphereGeometry args={[1, 40, 40]} />
-      <meshStandardMaterial map={texture} roughness={0.4} metalness={0.12} transparent opacity={opacity} />
+      <meshStandardMaterial
+        map={texture}
+        roughness={0.4}
+        metalness={0.12}
+        transparent
+        opacity={opacity}
+      />
     </mesh>
   );
 }

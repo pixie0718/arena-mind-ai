@@ -5,9 +5,7 @@ import type { TransportOption } from "@/types/knowledge";
 import { byCrowdThen } from "@/ai/reply-i18n";
 
 const inputSchema = z.object({
-  type: z
-    .enum(["metro", "bus", "taxi", "rideshare", "parking", "walking"])
-    .optional(),
+  type: z.enum(["metro", "bus", "taxi", "rideshare", "parking", "walking"]).optional(),
 });
 
 export type TransportSearchInput = z.infer<typeof inputSchema>;
@@ -18,9 +16,7 @@ async function execute(
 ): Promise<ToolResult<TransportOption[]>> {
   const input = inputSchema.parse(rawInput ?? {});
   const options = getTransportOptions(context.stadiumId);
-  const filtered = input.type
-    ? options.filter((option) => option.type === input.type)
-    : options;
+  const filtered = input.type ? options.filter((option) => option.type === input.type) : options;
 
   const sorted = [...filtered].sort(byCrowdThen((a, b) => a.etaMinutes - b.etaMinutes));
 

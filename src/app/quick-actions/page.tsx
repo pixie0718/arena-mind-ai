@@ -8,8 +8,7 @@ export default function QuickActionsPage() {
           Quick Actions
         </h1>
         <p className="text-sm font-medium text-muted-foreground">
-          Jump straight into a task — every action starts a conversation with
-          ArenaMind AI.
+          Jump straight into a task — every action starts a conversation with ArenaMind AI.
         </p>
       </header>
       <QuickActionsGrid />

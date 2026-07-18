@@ -11,10 +11,7 @@ const inputSchema = z.object({
 
 export type RouteLookupInput = z.infer<typeof inputSchema>;
 
-async function execute(
-  rawInput: unknown,
-  context: ToolContext,
-): Promise<ToolResult<Route>> {
+async function execute(rawInput: unknown, context: ToolContext): Promise<ToolResult<Route>> {
   const input = inputSchema.parse(rawInput);
   const route = findRoute(input.stadiumId ?? context.stadiumId, input.to);
 

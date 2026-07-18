@@ -49,19 +49,13 @@ export function setActiveIntent(sessionId: string, intent: IntentType): void {
   memory.updatedAt = new Date().toISOString();
 }
 
-export function setActiveWorkflow(
-  sessionId: string,
-  workflow: string | undefined,
-): void {
+export function setActiveWorkflow(sessionId: string, workflow: string | undefined): void {
   const memory = getMemory(sessionId);
   memory.activeWorkflow = workflow;
   memory.updatedAt = new Date().toISOString();
 }
 
-export function setLinkedTicket(
-  sessionId: string,
-  ticket: SessionMemory["linkedTicket"],
-): void {
+export function setLinkedTicket(sessionId: string, ticket: SessionMemory["linkedTicket"]): void {
   const memory = getMemory(sessionId);
   memory.linkedTicket = ticket;
   memory.updatedAt = new Date().toISOString();

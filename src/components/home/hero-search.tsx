@@ -12,9 +12,7 @@ export function HeroSearch() {
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const trimmed = query.trim();
-    const destination = trimmed
-      ? `/chat?q=${encodeURIComponent(trimmed)}`
-      : "/chat";
+    const destination = trimmed ? `/chat?q=${encodeURIComponent(trimmed)}` : "/chat";
     router.push(destination);
   }
 

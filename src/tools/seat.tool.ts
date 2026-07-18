@@ -13,7 +13,11 @@ const inputSchema = z.object({
 export type SectionLookupInput = z.infer<typeof inputSchema>;
 
 export type SectionLookupResult =
-  | { status: "found"; section: StadiumSectionConfig; requested: { row?: string; seatNumber?: string } }
+  | {
+      status: "found";
+      section: StadiumSectionConfig;
+      requested: { row?: string; seatNumber?: string };
+    }
   | { status: "gate_found"; gate: string }
   | { status: "unsupported_stadium"; stadiumId: string }
   | { status: "not_found"; query: string; suggestions: { id: string; label: string }[] };
@@ -39,7 +43,11 @@ async function execute(
     if (section) {
       return {
         success: true,
-        data: { status: "found", section, requested: { row: input.row, seatNumber: input.seatNumber } },
+        data: {
+          status: "found",
+          section,
+          requested: { row: input.row, seatNumber: input.seatNumber },
+        },
         source: "stadium-config",
       };
     }
@@ -58,7 +66,11 @@ async function execute(
   if (input.gate) {
     const normalized = input.gate.toUpperCase();
     if (config.gates.some((g) => g.toUpperCase() === normalized)) {
-      return { success: true, data: { status: "gate_found", gate: normalized }, source: "stadium-config" };
+      return {
+        success: true,
+        data: { status: "gate_found", gate: normalized },
+        source: "stadium-config",
+      };
     }
     return {
       success: false,

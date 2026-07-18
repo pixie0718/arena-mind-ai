@@ -1,4 +1,7 @@
-import type { ChatStreamDonePayload, ChatStreamFrame } from "@/features/chat/types/chat-stream.types";
+import type {
+  ChatStreamDonePayload,
+  ChatStreamFrame,
+} from "@/features/chat/types/chat-stream.types";
 
 export class ChatServiceError extends Error {
   status?: number;

@@ -64,7 +64,12 @@ export function SparkleField() {
       depthWrite: false,
     });
 
-    return { geometry: geom, material: mat, baseOpacity: palette.baseOpacity, pulse: palette.pulse };
+    return {
+      geometry: geom,
+      material: mat,
+      baseOpacity: palette.baseOpacity,
+      pulse: palette.pulse,
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps -- rebuild only when the resolved theme's palette actually changes
   }, [palette.green, palette.gold, palette.baseOpacity]);
 

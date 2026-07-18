@@ -27,7 +27,10 @@ export function SectionInfoPanel({ section, requested, onBack }: SectionInfoPane
           <span className="text-sm font-semibold text-foreground">{section.label}</span>
           {hasSeatDetail ? (
             <span className="text-xs text-muted-foreground">
-              {[requested.row && `Row ${requested.row}`, requested.seatNumber && `Seat ${requested.seatNumber}`]
+              {[
+                requested.row && `Row ${requested.row}`,
+                requested.seatNumber && `Seat ${requested.seatNumber}`,
+              ]
                 .filter(Boolean)
                 .join(", ")}
             </span>
@@ -37,7 +40,14 @@ export function SectionInfoPanel({ section, requested, onBack }: SectionInfoPane
             </span>
           )}
         </div>
-        <Button type="button" size="icon-sm" variant="ghost" className="size-12" aria-label="Back to section view" onClick={onBack}>
+        <Button
+          type="button"
+          size="icon-sm"
+          variant="ghost"
+          className="size-12"
+          aria-label="Back to section view"
+          onClick={onBack}
+        >
           <ArrowLeft className="size-4" />
         </Button>
       </div>

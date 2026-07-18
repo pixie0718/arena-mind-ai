@@ -30,7 +30,9 @@ export function NavigationErrorState({
               type="button"
               onClick={() =>
                 onSuggestedAction?.(
-                  suggestionPrompt ? suggestionPrompt(suggestion.label) : `Where is ${suggestion.label}?`,
+                  suggestionPrompt
+                    ? suggestionPrompt(suggestion.label)
+                    : `Where is ${suggestion.label}?`,
                 )
               }
               className="flex min-h-12 items-center gap-1 rounded-full border border-secondary/40 bg-secondary/10 px-2.5 py-1 text-xs font-medium text-secondary transition-colors hover:bg-secondary/20 active:scale-95"

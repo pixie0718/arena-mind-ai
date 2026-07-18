@@ -21,10 +21,7 @@ const inputSchema = z.object({
 
 export type FacilitySearchInput = z.infer<typeof inputSchema>;
 
-async function execute(
-  rawInput: unknown,
-  context: ToolContext,
-): Promise<ToolResult<Facility[]>> {
+async function execute(rawInput: unknown, context: ToolContext): Promise<ToolResult<Facility[]>> {
   const input = inputSchema.parse(rawInput ?? {});
   let facilities = getFacilities(context.stadiumId);
 

@@ -54,7 +54,9 @@ export function ChatComposer({
 
   return (
     <div className="flex flex-col gap-2 border-t border-white/10 bg-card/40 px-3 pb-[calc(env(safe-area-inset-bottom)+0.75rem)] pt-2.5 backdrop-blur-xl">
-      {showQuickActions && <QuickActionRail layout="rail" onSelect={onQuickAction} disabled={busy} />}
+      {showQuickActions && (
+        <QuickActionRail layout="rail" onSelect={onQuickAction} disabled={busy} />
+      )}
       <div className="flex items-center gap-2 rounded-2xl border border-white/10 bg-card/70 px-3 py-2 shadow-sm backdrop-blur-xl focus-within:ring-2 focus-within:ring-primary/40">
         <textarea
           ref={textareaRef}

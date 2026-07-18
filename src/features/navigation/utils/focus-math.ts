@@ -109,7 +109,10 @@ export function computeStepZoom(
   return computeZoomTowardPoint(current, point, next);
 }
 
-export function computeDoubleClickZoom(current: Transform, point: { x: number; y: number }): Transform {
+export function computeDoubleClickZoom(
+  current: Transform,
+  point: { x: number; y: number },
+): Transform {
   return computeZoomTowardPoint(current, point, current.scale * DOUBLE_CLICK_STEP);
 }
 

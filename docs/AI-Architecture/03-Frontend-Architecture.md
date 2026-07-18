@@ -44,19 +44,19 @@ The frontend follows these principles.
 
 # Technology Stack
 
-| Technology | Purpose |
-|------------|---------|
-| Next.js 15 | Framework |
-| React 19 | UI Library |
-| TypeScript | Type Safety |
-| Tailwind CSS | Styling |
-| shadcn/ui | Components |
-| Framer Motion | Animations |
-| Jotai | Global State |
-| React Hook Form | Forms |
-| Zod | Validation |
-| Vercel AI SDK | AI Integration |
-| Lucide React | Icons |
+| Technology      | Purpose        |
+| --------------- | -------------- |
+| Next.js 15      | Framework      |
+| React 19        | UI Library     |
+| TypeScript      | Type Safety    |
+| Tailwind CSS    | Styling        |
+| shadcn/ui       | Components     |
+| Framer Motion   | Animations     |
+| Jotai           | Global State   |
+| React Hook Form | Forms          |
+| Zod             | Validation     |
+| Vercel AI SDK   | AI Integration |
+| Lucide React    | Icons          |
 
 ---
 
@@ -368,11 +368,11 @@ Providers should remain lightweight.
 
 Tailwind CSS
 
-+
+-
 
 CSS Variables
 
-+
+-
 
 shadcn/ui
 
@@ -410,7 +410,7 @@ All forms should use:
 
 React Hook Form
 
-+
+-
 
 Zod Validation
 

@@ -12,12 +12,17 @@ interface ChatHeaderProps {
 export function ChatHeader({ onClear }: ChatHeaderProps) {
   return (
     <div className="flex shrink-0 items-center justify-between border-b border-white/10 bg-card/70 px-4 py-3 backdrop-blur-xl">
-      <Link href="/" className="flex items-center gap-2 rounded-lg transition-opacity hover:opacity-80">
+      <Link
+        href="/"
+        className="flex items-center gap-2 rounded-lg transition-opacity hover:opacity-80"
+      >
         <span className="glow-secondary flex size-7 items-center justify-center rounded-lg bg-secondary/15 text-secondary">
           <Goal className="size-3.5" />
         </span>
         <div className="flex flex-col leading-tight">
-          <h1 className="font-heading text-base tracking-wide text-foreground">ArenaMind Assistant</h1>
+          <h1 className="font-heading text-base tracking-wide text-foreground">
+            ArenaMind Assistant
+          </h1>
           <span className="text-[11px] text-muted-foreground">Always here to help</span>
         </div>
       </Link>

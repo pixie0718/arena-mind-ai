@@ -78,7 +78,8 @@ export function useStadiumMapController(viewBox: string): UseStadiumMapControlle
       let rect = bboxCache.current.get(cacheKey);
 
       if (!rect) {
-        const selector = kind === "section" ? `[data-section-id="${id}"]` : `[data-gate-id="${id}"]`;
+        const selector =
+          kind === "section" ? `[data-section-id="${id}"]` : `[data-gate-id="${id}"]`;
         const el = svgHostRef.current?.querySelector<SVGGraphicsElement>(selector);
         if (!el) return;
         const bbox = el.getBBox();
@@ -94,7 +95,10 @@ export function useStadiumMapController(viewBox: string): UseStadiumMapControlle
     [animateTo, getContainerSize, parsedViewBox],
   );
 
-  const focusSection = useCallback((sectionId: string) => focusById(sectionId, "section"), [focusById]);
+  const focusSection = useCallback(
+    (sectionId: string) => focusById(sectionId, "section"),
+    [focusById],
+  );
   const focusGate = useCallback((gateId: string) => focusById(gateId, "gate"), [focusById]);
 
   const resetToOverview = useCallback(() => {

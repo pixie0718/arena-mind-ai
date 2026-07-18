@@ -12,18 +12,18 @@ While functional requirements define features, non-functional requirements defin
 
 # NFR Categories
 
-| Category | Objective |
-|----------|-----------|
-| Performance | Fast and responsive user experience |
-| Availability | Reliable operation during events |
-| Security | Protect user data and AI interactions |
-| Accessibility | Inclusive design for all users |
-| Scalability | Support increasing numbers of users |
-| Maintainability | Easy to extend and maintain |
-| Reliability | Consistent system behavior |
-| Privacy | Responsible handling of user data |
-| Usability | Minimal learning curve |
-| Compatibility | Support modern browsers and devices |
+| Category        | Objective                             |
+| --------------- | ------------------------------------- |
+| Performance     | Fast and responsive user experience   |
+| Availability    | Reliable operation during events      |
+| Security        | Protect user data and AI interactions |
+| Accessibility   | Inclusive design for all users        |
+| Scalability     | Support increasing numbers of users   |
+| Maintainability | Easy to extend and maintain           |
+| Reliability     | Consistent system behavior            |
+| Privacy         | Responsible handling of user data     |
+| Usability       | Minimal learning curve                |
+| Compatibility   | Support modern browsers and devices   |
 
 ---
 
@@ -294,18 +294,18 @@ Because the MVP targets a hackathon demonstration:
 
 # Quality Attributes
 
-| Attribute | Target |
-|-----------|--------|
-| AI Response Time | < 2 sec |
-| Initial Load | < 3 sec |
-| Accessibility | WCAG 2.1 AA (target) |
-| Mobile Support | Fully Responsive |
-| Browser Support | Modern Browsers |
-| Session Persistence | Active Session |
-| Code Quality | Modular & Typed |
-| Security | Secure-by-Default |
-| Scalability | Feature Modular |
-| Deployment | One-click Vercel |
+| Attribute           | Target               |
+| ------------------- | -------------------- |
+| AI Response Time    | < 2 sec              |
+| Initial Load        | < 3 sec              |
+| Accessibility       | WCAG 2.1 AA (target) |
+| Mobile Support      | Fully Responsive     |
+| Browser Support     | Modern Browsers      |
+| Session Persistence | Active Session       |
+| Code Quality        | Modular & Typed      |
+| Security            | Secure-by-Default    |
+| Scalability         | Feature Modular      |
+| Deployment          | One-click Vercel     |
 
 ---
 

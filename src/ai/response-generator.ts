@@ -1,6 +1,7 @@
 import "server-only";
 import { streamText } from "ai";
 import { groq } from "@ai-sdk/groq";
+import { createAbortTimeout } from "@/ai/abort-timeout";
 import { buildPrompt } from "@/ai/prompt-builder";
 import { isFalseRefusal } from "@/ai/refusal-detector";
 import { chunkText } from "@/features/chat/utils/chunk-text";
@@ -171,7 +172,10 @@ function summarizeFacts(intent: IntentType, agentResponse: AgentResponse): strin
   ];
 
   if (agentResponse.requiresClarification && agentResponse.clarificationPrompt) {
-    sections.push("", `This turn is asking the visitor to clarify: ${agentResponse.clarificationPrompt}`);
+    sections.push(
+      "",
+      `This turn is asking the visitor to clarify: ${agentResponse.clarificationPrompt}`,
+    );
   }
 
   sections.push("", GROUNDING_INSTRUCTIONS);
@@ -222,9 +226,7 @@ export interface GroundedStreamParams {
  * fails/times out — mirroring the fallback pattern already established in
  * `ai/intent-engine.ts`.
  */
-export async function* streamGroundedReply(
-  params: GroundedStreamParams,
-): AsyncGenerator<string> {
+export async function* streamGroundedReply(params: GroundedStreamParams): AsyncGenerator<string> {
   if (!process.env.GROQ_API_KEY || !shouldGroundWithLLM(params.intent)) {
     yield* streamTemplateReply(params.agentResponse.reply);
     return;
@@ -238,8 +240,7 @@ export async function* streamGroundedReply(
     history: params.history,
   });
 
-  const timeoutController = new AbortController();
-  const timeout = setTimeout(() => timeoutController.abort(), GENERATION_TIMEOUT_MS);
+  const timeout = createAbortTimeout(GENERATION_TIMEOUT_MS);
   let yieldedAny = false;
 
   const [systemMessage, ...conversation] = built.messages;
@@ -249,7 +250,7 @@ export async function* streamGroundedReply(
       model: GENERATION_MODEL,
       system: systemMessage.content,
       messages: conversation,
-      abortSignal: timeoutController.signal,
+      abortSignal: timeout.signal,
       // Default is 2 retries (3 attempts) with backoff between each — found
       // live under real Groq rate-limiting that this let a single failing
       // call run 12-14s despite our own `GENERATION_TIMEOUT_MS = 8000`
@@ -306,7 +307,7 @@ export async function* streamGroundedReply(
   } catch (error) {
     console.warn("[response-generator] Grounded generation failed:", error);
   } finally {
-    clearTimeout(timeout);
+    timeout.clear();
   }
 
   // Covers BOTH a thrown error and a silently-aborted/empty stream: an

@@ -25,7 +25,4 @@ export type ChatUIMessage = ChatMessage & {
  * prompt/context building. It is not the source of truth for what the UI
  * renders.
  */
-export const chatMessagesAtom = atomWithStorage<ChatUIMessage[]>(
-  "arenamind:chat:messages",
-  [],
-);
+export const chatMessagesAtom = atomWithStorage<ChatUIMessage[]>("arenamind:chat:messages", []);

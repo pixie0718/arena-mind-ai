@@ -32,7 +32,11 @@ export function LinkedTicketForm() {
     if (!section.trim()) return;
     setTicket({ stadiumId, block: section.trim(), row: row.trim(), seat: seat.trim() });
 
-    const bits = [`Section ${section.trim()}`, row.trim() && `Row ${row.trim()}`, seat.trim() && `Seat ${seat.trim()}`]
+    const bits = [
+      `Section ${section.trim()}`,
+      row.trim() && `Row ${row.trim()}`,
+      seat.trim() && `Seat ${seat.trim()}`,
+    ]
       .filter(Boolean)
       .join(", ");
     router.push(`/chat?q=${encodeURIComponent(`My seat is ${bits}.`)}`);
@@ -46,7 +50,8 @@ export function LinkedTicketForm() {
           My Ticket
         </CardTitle>
         <CardDescription>
-          Save your seat once — the assistant remembers it for navigation and emergency requests without asking again.
+          Save your seat once — the assistant remembers it for navigation and emergency requests
+          without asking again.
         </CardDescription>
       </CardHeader>
       <CardContent className="flex flex-col gap-2.5">
@@ -82,7 +87,12 @@ export function LinkedTicketForm() {
             />
           </label>
         </div>
-        <Button type="button" disabled={!section.trim()} onClick={handleSave} className="glow-primary min-h-12 w-full">
+        <Button
+          type="button"
+          disabled={!section.trim()}
+          onClick={handleSave}
+          className="glow-primary min-h-12 w-full"
+        >
           Save &amp; Tell Assistant
         </Button>
       </CardContent>

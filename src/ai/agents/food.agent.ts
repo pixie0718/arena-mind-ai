@@ -22,74 +22,62 @@ function menuItemFor(vendor: Vendor, message: string): Vendor["menu"][number] | 
   return vendor.menu.find((item) => normalized.includes(item.name.toLowerCase()));
 }
 
-async function handle(request: AgentRequest): Promise<AgentResponse> {
-  const foodTool = getTool("food");
-  const toolCalls: AgentResponse["toolCalls"] = [];
+/**
+ * Exactly one vendor uniquely resolved (e.g. "Order from Green Bowl
+ * Kitchen.") — either confirm a specific menu item if one is also named in
+ * this message, or show that vendor's menu so the next message can name one.
+ */
+function buildSingleVendorResponse(
+  vendor: Vendor,
+  request: AgentRequest,
+  toolCalls: AgentResponse["toolCalls"],
+): AgentResponse {
   const language = request.context.language;
+  const item = menuItemFor(vendor, request.message.content);
 
-  let vendors: Vendor[] = [];
-  let reply = t.foodClarify(language);
-
-  if (foodTool) {
-    const result = await foodTool.execute(
-      { query: request.message.content },
-      {
-        sessionId: request.context.sessionId,
-        stadiumId: request.context.stadiumId,
-        language: request.context.language,
-      },
-    );
-    toolCalls.push({
-      toolName: foodTool.name,
-      input: { query: request.message.content },
-      output: result.data,
-    });
-    vendors = (result.data as Vendor[] | undefined) ?? [];
-  }
-
-  // Exactly one vendor uniquely resolved (e.g. "Order from Green Bowl
-  // Kitchen.") — either confirm a specific menu item if one is also named
-  // in this message, or show that vendor's menu so the next message can
-  // name one.
-  if (vendors.length === 1) {
-    const vendor = vendors[0];
-    const item = menuItemFor(vendor, request.message.content);
-
-    if (item) {
-      const order: FoodOrder = {
-        id: generateId("food"),
-        sessionId: request.context.sessionId,
-        vendorName: vendor.name,
-        itemName: item.name,
-        price: item.price,
-        createdAt: request.context.currentTime,
-      };
-      orders.push(order);
-
-      return {
-        agentId: "food",
-        reply: t.foodOrderConfirmed(language, item.name, vendor.name, item.price, order.id),
-        toolCalls,
-        suggestedActions: [],
-        requiresClarification: false,
-        metadata: { orderId: order.id },
-      };
-    }
+  if (item) {
+    const order: FoodOrder = {
+      id: generateId("food"),
+      sessionId: request.context.sessionId,
+      vendorName: vendor.name,
+      itemName: item.name,
+      price: item.price,
+      createdAt: request.context.currentTime,
+    };
+    orders.push(order);
 
     return {
       agentId: "food",
-      reply: t.foodMenuIntro(language, vendor.name),
+      reply: t.foodOrderConfirmed(language, item.name, vendor.name, item.price, order.id),
       toolCalls,
-      suggestedActions: vendor.menu.slice(0, 4).map((menuItem) => ({
-        label: `${menuItem.name} — $${menuItem.price.toFixed(2)}`,
-        // Must contain a food-intent keyword ("order") or this never
-        // reaches the food agent at all — the intent engine classifies
-        // fresh messages from scratch, it doesn't know we're mid-menu.
-        prompt: `Order the ${menuItem.name} from ${vendor.name}.`,
-      })),
+      suggestedActions: [],
       requiresClarification: false,
+      metadata: { orderId: order.id },
     };
   }
+
+  return {
+    agentId: "food",
+    reply: t.foodMenuIntro(language, vendor.name),
+    toolCalls,
+    suggestedActions: vendor.menu.slice(0, 4).map((menuItem) => ({
+      label: `${menuItem.name} — $${menuItem.price.toFixed(2)}`,
+      // Must contain a food-intent keyword ("order") or this never reaches
+      // the food agent at all — the intent engine classifies fresh
+      // messages from scratch, it doesn't know we're mid-menu.
+      prompt: `Order the ${menuItem.name} from ${vendor.name}.`,
+    })),
+    requiresClarification: false,
+  };
+}
+
+function buildVendorListResponse(
+  vendors: Vendor[],
+  request: AgentRequest,
+  toolCalls: AgentResponse["toolCalls"],
+): AgentResponse {
+  const language = request.context.language;
+  let reply = t.foodClarify(language);
 
   const top = vendors[0];
   if (top) {
@@ -110,6 +98,35 @@ async function handle(request: AgentRequest): Promise<AgentResponse> {
     requiresClarification: vendors.length === 0,
     clarificationPrompt: vendors.length === 0 ? "What are you in the mood for?" : undefined,
   };
+}
+
+async function handle(request: AgentRequest): Promise<AgentResponse> {
+  const foodTool = getTool("food");
+  const toolCalls: AgentResponse["toolCalls"] = [];
+  let vendors: Vendor[] = [];
+
+  if (foodTool) {
+    const result = await foodTool.execute(
+      { query: request.message.content },
+      {
+        sessionId: request.context.sessionId,
+        stadiumId: request.context.stadiumId,
+        language: request.context.language,
+      },
+    );
+    toolCalls.push({
+      toolName: foodTool.name,
+      input: { query: request.message.content },
+      output: result.data,
+    });
+    vendors = (result.data as Vendor[] | undefined) ?? [];
+  }
+
+  if (vendors.length === 1) {
+    return buildSingleVendorResponse(vendors[0], request, toolCalls);
+  }
+
+  return buildVendorListResponse(vendors, request, toolCalls);
 }
 
 export const foodAgent: AgentDefinition = {

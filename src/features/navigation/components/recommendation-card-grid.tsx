@@ -1,7 +1,14 @@
 "use client";
 
 import { memo } from "react";
-import { DoorOpen, Clock, Sparkles, UtensilsCrossed, DoorClosed, Accessibility } from "lucide-react";
+import {
+  DoorOpen,
+  Clock,
+  Sparkles,
+  UtensilsCrossed,
+  DoorClosed,
+  Accessibility,
+} from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import type { StadiumSectionConfig } from "@/types/stadium-config";
@@ -22,9 +29,12 @@ function RecommendationCardGridImpl({ section, wheelchairPreferred }: Recommenda
     { icon: DoorOpen, label: "Entry gate", value: `Gate ${section.gate}` },
     { icon: Clock, label: "Walking time", value: `${section.walkingTimeMinutes} min` },
   ];
-  if (section.nearby.restroom) tiles.push({ icon: Sparkles, label: "Restroom", value: section.nearby.restroom });
-  if (section.nearby.food) tiles.push({ icon: UtensilsCrossed, label: "Food nearby", value: section.nearby.food });
-  if (section.nearby.exit) tiles.push({ icon: DoorClosed, label: "Emergency exit", value: section.nearby.exit });
+  if (section.nearby.restroom)
+    tiles.push({ icon: Sparkles, label: "Restroom", value: section.nearby.restroom });
+  if (section.nearby.food)
+    tiles.push({ icon: UtensilsCrossed, label: "Food nearby", value: section.nearby.food });
+  if (section.nearby.exit)
+    tiles.push({ icon: DoorClosed, label: "Emergency exit", value: section.nearby.exit });
 
   return (
     <div className="flex flex-col gap-2">
@@ -41,7 +51,9 @@ function RecommendationCardGridImpl({ section, wheelchairPreferred }: Recommenda
                 <span className="text-[11px] font-medium uppercase tracking-wide text-muted-foreground/90">
                   {tile.label}
                 </span>
-                <span className="text-xs leading-snug font-semibold text-foreground">{tile.value}</span>
+                <span className="text-xs leading-snug font-semibold text-foreground">
+                  {tile.value}
+                </span>
               </div>
             </CardContent>
           </Card>

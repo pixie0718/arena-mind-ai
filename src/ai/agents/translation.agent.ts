@@ -41,7 +41,11 @@ async function handle(request: AgentRequest): Promise<AgentResponse> {
         language: request.context.language,
       },
     );
-    toolCalls.push({ toolName: translationTool.name, input: { text, targetLanguage }, output: result.data });
+    toolCalls.push({
+      toolName: translationTool.name,
+      input: { text, targetLanguage },
+      output: result.data,
+    });
 
     if (result.success && result.data) {
       const data = result.data as TranslationResult;

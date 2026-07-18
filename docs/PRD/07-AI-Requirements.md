@@ -518,7 +518,7 @@ Emergency responses
 
 Intent detection accuracy
 
->95%
+> 95%
 
 Context retrieval
 

@@ -114,7 +114,8 @@ export function buildPrompt(params: {
     .join("\n\n---\n\n");
 
   const historyMessages: BuiltPromptMessage[] = params.history.slice(-10).map((message) => ({
-    role: message.role === "tool" ? "assistant" : message.role === "system" ? "system" : message.role,
+    role:
+      message.role === "tool" ? "assistant" : message.role === "system" ? "system" : message.role,
     content: message.content,
   }));
 

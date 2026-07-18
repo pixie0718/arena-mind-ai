@@ -2,6 +2,7 @@ import "server-only";
 import { z } from "zod";
 import { generateText } from "ai";
 import { groq } from "@ai-sdk/groq";
+import { createAbortTimeout } from "@/ai/abort-timeout";
 import type { ToolContext, ToolDefinition, ToolResult } from "@/types/tool";
 
 const inputSchema = z.object({
@@ -36,15 +37,14 @@ ONLY the translated phrase, nothing else.`;
  * phrasebook below and the assistant keeps working through a model outage.
  */
 async function translateWithGroq(text: string, targetLanguageName: string): Promise<string | null> {
-  const timeoutController = new AbortController();
-  const timeout = setTimeout(() => timeoutController.abort(), LLM_TIMEOUT_MS);
+  const timeout = createAbortTimeout(LLM_TIMEOUT_MS);
 
   try {
     const { text: translated } = await generateText({
       model: TRANSLATION_MODEL,
       system: TRANSLATOR_SYSTEM_PROMPT,
       prompt: `Translate this phrase into ${targetLanguageName}:\n\n${text}`,
-      abortSignal: timeoutController.signal,
+      abortSignal: timeout.signal,
       // See the matching comment in ai/response-generator.ts — caps the
       // SDK's internal retry cascade so the demo-phrasebook fallback below
       // takes over promptly during a real outage instead of after a long
@@ -55,10 +55,13 @@ async function translateWithGroq(text: string, targetLanguageName: string): Prom
     const trimmed = translated.trim();
     return trimmed.length > 0 ? trimmed : null;
   } catch (error) {
-    console.warn("[translation.tool] Groq translation failed, falling back to demo phrasebook:", error);
+    console.warn(
+      "[translation.tool] Groq translation failed, falling back to demo phrasebook:",
+      error,
+    );
     return null;
   } finally {
-    clearTimeout(timeout);
+    timeout.clear();
   }
 }
 
@@ -137,7 +140,8 @@ async function execute(
 
 export const translationTool: ToolDefinition<TranslationResult> = {
   name: "translation",
-  description: "Translates arbitrary stadium phrases into a visitor's preferred language via Groq, with a small demo phrasebook fallback.",
+  description:
+    "Translates arbitrary stadium phrases into a visitor's preferred language via Groq, with a small demo phrasebook fallback.",
   inputSchema,
   execute,
 };

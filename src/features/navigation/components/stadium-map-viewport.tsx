@@ -44,8 +44,18 @@ export function StadiumMapViewport({
   controller,
   onSectionSelect,
 }: StadiumMapViewportProps) {
-  const { scale, x, y, containerRef, svgHostRef, focusSection, focusGate, zoomIn, zoomOut, resetToOverview } =
-    controller;
+  const {
+    scale,
+    x,
+    y,
+    containerRef,
+    svgHostRef,
+    focusSection,
+    focusGate,
+    zoomIn,
+    zoomOut,
+    resetToOverview,
+  } = controller;
   const pointers = useRef(new Map<number, { x: number; y: number }>());
   const pinchStartDistance = useRef<number | null>(null);
   const [liveMessage, setLiveMessage] = useState("");

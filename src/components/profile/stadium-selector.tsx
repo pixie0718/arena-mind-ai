@@ -23,7 +23,9 @@ export function StadiumSelector() {
           <Landmark className="size-4 text-secondary" aria-hidden="true" />
           Stadium
         </CardTitle>
-        <CardDescription>Sets which stadium&apos;s map and knowledge base the assistant uses.</CardDescription>
+        <CardDescription>
+          Sets which stadium&apos;s map and knowledge base the assistant uses.
+        </CardDescription>
       </CardHeader>
       <CardContent className="flex flex-wrap gap-2">
         {STADIUMS.map((stadium) => {
